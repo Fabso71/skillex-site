@@ -6,189 +6,593 @@
   <title>SkillEX</title>
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #0b0f14;
-      color: white;
+      background: #0d1117;
+      color: #f5f7fa;
       line-height: 1.6;
     }
 
-    nav {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(13, 17, 23, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
-      background: #111827;
-      border-bottom: 1px solid #1f2937;
     }
 
-    nav .logo {
-      font-size: 24px;
+    .logo {
+      font-size: 1.5rem;
       font-weight: bold;
-      color: #22c55e;
+      color: #4ea1ff;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 20px;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 15px;
+    nav a {
+      color: #e6edf3;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #4ea1ff;
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-btn {
+      border: 1px solid rgba(255,255,255,0.15);
+      background: transparent;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active {
+      background: #4ea1ff;
+      border-color: #4ea1ff;
+      color: #0d1117;
+      font-weight: bold;
     }
 
     .hero {
-      text-align: center;
-      padding: 100px 20px 80px;
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
+      padding: 100px 24px 70px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
     }
 
-    .hero h1 {
-      font-size: 52px;
-      margin-bottom: 20px;
+    .hero-text h1 {
+      font-size: 3.4rem;
       line-height: 1.1;
+      margin-bottom: 18px;
     }
 
-    .hero h1 span {
-      color: #22c55e;
-    }
-
-    .hero p {
-      font-size: 20px;
-      color: #cbd5e1;
-      max-width: 700px;
-      margin: 0 auto 30px;
+    .hero-text p {
+      font-size: 1.1rem;
+      color: #b9c2cf;
+      max-width: 650px;
+      margin-bottom: 28px;
     }
 
     .hero-buttons {
       display: flex;
-      justify-content: center;
-      gap: 15px;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 14px 24px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
       display: inline-block;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.2s ease;
     }
 
     .btn-primary {
-      background: #22c55e;
-      color: black;
+      background: #4ea1ff;
+      color: #0d1117;
+    }
+
+    .btn-primary:hover {
+      background: #7dbdff;
     }
 
     .btn-secondary {
-      border: 1px solid #334155;
-      color: white;
-      background: transparent;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
     }
 
-    .section {
-      padding: 70px 20px;
-      max-width: 1100px;
+    .btn-secondary:hover {
+      border-color: #4ea1ff;
+      color: #4ea1ff;
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, #161b22, #11161d);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    }
+
+    .hero-card h3 {
+      margin-bottom: 14px;
+      color: #4ea1ff;
+    }
+
+    .hero-card ul {
+      list-style: none;
+    }
+
+    .hero-card li {
+      margin-bottom: 12px;
+      color: #d7dee7;
+    }
+
+    .stats {
+      max-width: 1200px;
       margin: 0 auto;
-    }
-
-    .section h2 {
-      text-align: center;
-      font-size: 34px;
-      margin-bottom: 40px;
-    }
-
-    .cards {
+      padding: 0 24px 70px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
-    .card {
-      background: #111827;
-      border: 1px solid #1f2937;
+    .stat-box {
+      background: #161b22;
+      padding: 24px;
       border-radius: 16px;
-      padding: 25px;
+      border: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+    }
+
+    .stat-box h3 {
+      font-size: 2rem;
+      color: #4ea1ff;
+      margin-bottom: 8px;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #b9c2cf;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: #161b22;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 28px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(78, 161, 255, 0.45);
     }
 
     .card h3 {
       margin-bottom: 12px;
-      color: #22c55e;
+      color: #4ea1ff;
+    }
+
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .panel {
+      background: #161b22;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .panel h3 {
+      margin-bottom: 14px;
+      font-size: 1.4rem;
+      color: #4ea1ff;
+    }
+
+    .panel ul {
+      padding-left: 18px;
+      color: #d7dee7;
+    }
+
+    .panel li {
+      margin-bottom: 10px;
+    }
+
+    .faq {
+      display: grid;
+      gap: 18px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: #161b22;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .faq-item h4 {
+      margin-bottom: 10px;
+      color: #4ea1ff;
+    }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(145deg, #161b22, #11161d);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 45px 24px;
+    }
+
+    .cta h2 {
+      margin-bottom: 12px;
+      font-size: 2rem;
+    }
+
+    .cta p {
+      color: #b9c2cf;
+      margin-bottom: 22px;
     }
 
     footer {
       text-align: center;
-      padding: 30px 20px;
-      color: #94a3b8;
-      border-top: 1px solid #1f2937;
-      margin-top: 50px;
+      color: #8b98a9;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .split-section,
+      .cards-3,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      nav ul {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 70px;
+      }
+
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-
-  <nav>
-    <div class="logo">SkillEX</div>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#how">How it works</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </nav>
-
-  <section class="hero" id="home">
-    <h1>The network where <span>gaming meets</span> career.</h1>
-    <p>
-      SkillEX helps gamers turn in-game experience into real-world opportunities
-      by highlighting transferable skills such as teamwork, communication, and strategy.
-    </p>
-    <div class="hero-buttons">
-      <a href="#how" class="btn btn-primary">Get Started</a>
-      <a href="#about" class="btn btn-secondary">Learn More</a>
-    </div>
-  </section>
-
-  <section class="section" id="how">
-    <h2>How it works</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Connect your games</h3>
-        <p>Add your gaming background and show what you play competitively or casually.</p>
-      </div>
-      <div class="card">
-        <h3>Build your profile</h3>
-        <p>SkillEX translates gaming experience into useful professional skills.</p>
-      </div>
-      <div class="card">
-        <h3>Get discovered</h3>
-        <p>Companies can find players with discipline, teamwork, and decision-making ability.</p>
+  <header>
+    <div class="nav-container">
+      <div class="logo">SkillEX</div>
+      <nav>
+        <ul>
+          <li><a href="#home" data-en="Home" data-de="Start">Home</a></li>
+          <li><a href="#how" data-en="How It Works" data-de="So funktioniert's">How It Works</a></li>
+          <li><a href="#gamers" data-en="For Gamers" data-de="Für Gamer">For Gamers</a></li>
+          <li><a href="#companies" data-en="For Companies" data-de="Für Unternehmen">For Companies</a></li>
+          <li><a href="#faq" data-en="FAQ" data-de="FAQ">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="setLanguage('de')">DE</button>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section class="section" id="about">
-    <h2>About SkillEX</h2>
-    <div class="card">
-      <p>
-        SkillEX is a concept platform designed to connect gamers and employers.
-        The goal is to show that gaming can build valuable transferable skills
-        that matter in real careers.
-      </p>
-    </div>
-  </section>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <h1 data-en="The network where gaming meets career."
+            data-de="Das Netzwerk, wo Gaming auf Karriere trifft.">
+          The network where gaming meets career.
+        </h1>
+
+        <p data-en="SkillEX helps gamers turn in-game performance into real-world opportunities by translating gaming experience into transferable professional skills."
+           data-de="SkillEX hilft Gamern dabei, ihre In-Game-Leistung in echte Karrierechancen zu verwandeln, indem Spielerfahrung in übertragbare berufliche Fähigkeiten übersetzt wird.">
+          SkillEX helps gamers turn in-game performance into real-world opportunities by translating gaming experience into transferable professional skills.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#gamers" class="btn btn-primary" data-en="Explore for Gamers" data-de="Für Gamer entdecken">Explore for Gamers</a>
+          <a href="#companies" class="btn btn-secondary" data-en="Explore for Companies" data-de="Für Unternehmen entdecken">Explore for Companies</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3 data-en="Why SkillEX?" data-de="Warum SkillEX?">Why SkillEX?</h3>
+        <ul>
+          <li data-en="✓ Connect gaming identity with professional potential"
+              data-de="✓ Gaming-Identität mit beruflichem Potenzial verbinden">
+            ✓ Connect gaming identity with professional potential
+          </li>
+          <li data-en="✓ Highlight teamwork, strategy, leadership and communication"
+              data-de="✓ Teamwork, Strategie, Leadership und Kommunikation sichtbar machen">
+            ✓ Highlight teamwork, strategy, leadership and communication
+          </li>
+          <li data-en="✓ Give companies access to overlooked talent"
+              data-de="✓ Unternehmen Zugang zu unterschätzten Talenten geben">
+            ✓ Give companies access to overlooked talent
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat-box">
+        <h3>3</h3>
+        <p data-en="Core Steps in the Platform Journey" data-de="Kernschritte im Plattform-Ablauf">Core Steps in the Platform Journey</p>
+      </div>
+      <div class="stat-box">
+        <h3>2</h3>
+        <p data-en="Main User Groups: Gamers & Companies" data-de="Zwei Hauptzielgruppen: Gamer & Unternehmen">Main User Groups: Gamers & Companies</p>
+      </div>
+      <div class="stat-box">
+        <h3>24/7</h3>
+        <p data-en="Digital Access to Profiles and Opportunities" data-de="Digitaler Zugang zu Profilen und Chancen">Digital Access to Profiles and Opportunities</p>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="section-title">
+        <h2 data-en="How SkillEX works" data-de="So funktioniert SkillEX">How SkillEX works</h2>
+        <p data-en="The concept is simple: show that gaming develops valuable skills and make those skills visible to employers."
+           data-de="Das Konzept ist einfach: Gaming entwickelt wertvolle Fähigkeiten, und diese Fähigkeiten werden für Arbeitgeber sichtbar gemacht.">
+          The concept is simple: show that gaming develops valuable skills and make those skills visible to employers.
+        </p>
+      </div>
+
+      <div class="cards-3">
+        <div class="card">
+          <h3 data-en="1. Connect your profile" data-de="1. Profil verknüpfen">1. Connect your profile</h3>
+          <p data-en="Users add their gaming background, favorite titles, competitive history, and playstyle."
+             data-de="Nutzer fügen ihren Gaming-Hintergrund, ihre Spiele, ihre Competitive-Erfahrung und ihren Spielstil hinzu.">
+            Users add their gaming background, favorite titles, competitive history, and playstyle.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 data-en="2. Translate skills" data-de="2. Skills übersetzen">2. Translate skills</h3>
+          <p data-en="SkillEX identifies transferable strengths such as teamwork, communication, problem-solving, discipline, and adaptability."
+             data-de="SkillEX erkennt übertragbare Stärken wie Teamwork, Kommunikation, Problemlösung, Disziplin und Anpassungsfähigkeit.">
+            SkillEX identifies transferable strengths such as teamwork, communication, problem-solving, discipline, and adaptability.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 data-en="3. Create opportunities" data-de="3. Chancen schaffen">3. Create opportunities</h3>
+          <p data-en="Companies can explore player profiles and discover talent with proven performance habits."
+             data-de="Unternehmen können Spielerprofile entdecken und Talente mit nachweisbaren Leistungsgewohnheiten finden.">
+            Companies can explore player profiles and discover talent with proven performance habits.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gamers">
+      <div class="section-title">
+        <h2 data-en="For Gamers" data-de="Für Gamer">For Gamers</h2>
+        <p data-en="Gaming is more than entertainment. It can build real skills that deserve recognition."
+           data-de="Gaming ist mehr als Unterhaltung. Es kann echte Fähigkeiten aufbauen, die Anerkennung verdienen.">
+          Gaming is more than entertainment. It can build real skills that deserve recognition.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3 data-en="Why gamers would use SkillEX" data-de="Warum Gamer SkillEX nutzen würden">Why gamers would use SkillEX</h3>
+        <ul>
+          <li data-en="Create a profile based on gaming experience" data-de="Ein Profil auf Basis der eigenen Gaming-Erfahrung erstellen">Create a profile based on gaming experience</li>
+          <li data-en="Show leadership, teamwork, strategy, and communication in a new way" data-de="Leadership, Teamwork, Strategie und Kommunikation neu sichtbar machen">Show leadership, teamwork, strategy, and communication in a new way</li>
+          <li data-en="Get noticed by companies that value performance and mindset" data-de="Von Unternehmen entdeckt werden, die Leistung und Mindset schätzen">Get noticed by companies that value performance and mindset</li>
+          <li data-en="Stand out without relying only on a traditional CV" data-de="Sich abheben, ohne sich nur auf einen klassischen Lebenslauf zu verlassen">Stand out without relying only on a traditional CV</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="companies">
+      <div class="section-title">
+        <h2 data-en="For Companies" data-de="Für Unternehmen">For Companies</h2>
+        <p data-en="SkillEX helps companies discover motivated candidates through demonstrated performance patterns from gaming."
+           data-de="SkillEX hilft Unternehmen dabei, motivierte Kandidaten durch nachweisbare Leistungsmerkmale aus dem Gaming zu entdecken.">
+          SkillEX helps companies discover motivated candidates through demonstrated performance patterns from gaming.
+        </p>
+      </div>
+
+      <div class="split-section">
+        <div class="panel">
+          <h3 data-en="Benefits for employers" data-de="Vorteile für Arbeitgeber">Benefits for employers</h3>
+          <ul>
+            <li data-en="Access a new pool of talent" data-de="Zugang zu einem neuen Talentpool">Access a new pool of talent</li>
+            <li data-en="Identify soft skills through gaming behavior" data-de="Soft Skills über Gaming-Verhalten erkennen">Identify soft skills through gaming behavior</li>
+            <li data-en="Find candidates with discipline, focus, and adaptability" data-de="Kandidaten mit Disziplin, Fokus und Anpassungsfähigkeit finden">Find candidates with discipline, focus, and adaptability</li>
+            <li data-en="Build stronger, more diverse teams" data-de="Stärkere und vielfältigere Teams aufbauen">Build stronger, more diverse teams</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3 data-en="Target industries" data-de="Zielbranchen">Target industries</h3>
+          <ul>
+            <li data-en="Esports and gaming organizations" data-de="Esports- und Gaming-Unternehmen">Esports and gaming organizations</li>
+            <li data-en="Technology and software companies" data-de="Technologie- und Softwareunternehmen">Technology and software companies</li>
+            <li data-en="Digital marketing agencies" data-de="Digitale Marketing-Agenturen">Digital marketing agencies</li>
+            <li data-en="Startups looking for competitive, coachable talent" data-de="Startups, die leistungsstarke und lernfähige Talente suchen">Startups looking for competitive, coachable talent</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="section-title">
+        <h2 data-en="Frequently Asked Questions" data-de="Häufig gestellte Fragen">Frequently Asked Questions</h2>
+        <p data-en="This section answers some of the main questions users might have about the SkillEX concept."
+           data-de="Dieser Bereich beantwortet einige der wichtigsten Fragen zum SkillEX-Konzept.">
+          This section answers some of the main questions users might have about the SkillEX concept.
+        </p>
+      </div>
+
+      <div class="faq">
+        <div class="faq-item">
+          <h4 data-en="What is SkillEX?" data-de="Was ist SkillEX?">What is SkillEX?</h4>
+          <p data-en="SkillEX is a concept platform that connects gamers and employers by translating gaming experience into professional value."
+             data-de="SkillEX ist eine Konzeptplattform, die Gamer und Arbeitgeber verbindet, indem Spielerfahrung in beruflichen Mehrwert übersetzt wird.">
+            SkillEX is a concept platform that connects gamers and employers by translating gaming experience into professional value.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h4 data-en="Who is the platform for?" data-de="Für wen ist die Plattform?">Who is the platform for?</h4>
+          <p data-en="The platform is designed for gamers who want career opportunities and companies looking for new kinds of talent."
+             data-de="Die Plattform ist für Gamer gedacht, die Karrierechancen suchen, und für Unternehmen, die neue Talente entdecken möchten.">
+            The platform is designed for gamers who want career opportunities and companies looking for new kinds of talent.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h4 data-en="Is this a finished business?" data-de="Ist das schon ein fertiges Unternehmen?">Is this a finished business?</h4>
+          <p data-en="At this stage, SkillEX is presented as a developing concept website showing the vision, audience, and value proposition."
+             data-de="Aktuell wird SkillEX als sich entwickelnde Konzept-Website präsentiert, die Vision, Zielgruppe und Nutzen zeigt.">
+            At this stage, SkillEX is presented as a developing concept website showing the vision, audience, and value proposition.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="cta">
+        <h2 data-en="SkillEX is still growing." data-de="SkillEX entwickelt sich weiter.">SkillEX is still growing.</h2>
+        <p data-en="This website represents the next stage of the project with improved structure, stronger design, and expanded content."
+           data-de="Diese Website zeigt den nächsten Entwicklungsschritt des Projekts mit besserer Struktur, stärkerem Design und erweitertem Inhalt.">
+          This website represents the next stage of the project with improved structure, stronger design, and expanded content.
+        </p>
+        <a href="#home" class="btn btn-primary" data-en="Back to Top" data-de="Zurück nach oben">Back to Top</a>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    © 2026 SkillEX. Built for project development.
+    <p data-en="© 2026 SkillEX. Built for project development."
+       data-de="© 2026 SkillEX. Erstellt für die Projektentwicklung.">
+      © 2026 SkillEX. Built for project development.
+    </p>
   </footer>
 
+  <script>
+    function setLanguage(language) {
+      const elements = document.querySelectorAll("[data-en]");
+      const buttons = document.querySelectorAll(".lang-btn");
+
+      elements.forEach(element => {
+        element.textContent = element.getAttribute(`data-${language}`);
+      });
+
+      buttons.forEach(button => button.classList.remove("active"));
+
+      if (language === "en") {
+        buttons[0].classList.add("active");
+        document.documentElement.lang = "en";
+      } else {
+        buttons[1].classList.add("active");
+        document.documentElement.lang = "de";
+      }
+    }
+  </script>
 </body>
 </html>
