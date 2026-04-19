@@ -3,888 +3,1045 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>skillex — For Talent</title>
-  <meta name="description" content="Build a profile companies can actually read beyond CV keywords." />
+  <title>SkillEX | Where Gaming Meets Career</title>
+  <meta
+    name="description"
+    content="SkillEX helps gamers turn in-game performance into real-world career opportunities."
+  />
+
   <style>
     :root {
-      --bg: #07111f;
-      --bg-soft: #0d1b2f;
-      --card: rgba(13, 27, 47, 0.72);
-      --card-strong: rgba(12, 23, 41, 0.95);
-      --line: rgba(255,255,255,0.08);
-      --text: #eef4ff;
-      --muted: #afbdd2;
-      --blue: #63a7ff;
-      --blue-strong: #3c8bff;
-      --green: #6be2bb;
-      --shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 16px;
-      --max: 1180px;
+      --bg: #0b1020;
+      --bg-soft: #11182b;
+      --card: rgba(18, 26, 40, 0.82);
+      --text: #f4f7fb;
+      --muted: #aab6cf;
+      --line: rgba(255, 255, 255, 0.08);
+      --primary: #6ea8ff;
+      --primary-2: #8f6bff;
+      --success: #72e2a8;
+      --danger: #ff7676;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+      --radius: 20px;
+      --max: 1200px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
+    * {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(60,139,255,0.18), transparent 28%),
-        radial-gradient(circle at 80% 15%, rgba(107,226,187,0.12), transparent 18%),
-        linear-gradient(180deg, #08111e 0%, #07111f 46%, #0a1424 100%);
-      line-height: 1.55;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-    .nav-wrap {
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(110, 168, 255, 0.12), transparent 30%),
+        radial-gradient(circle at top right, rgba(143, 107, 255, 0.10), transparent 28%),
+        linear-gradient(180deg, #09101d 0%, #0b1020 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 1000;
       backdrop-filter: blur(14px);
-      background: rgba(7, 17, 31, 0.72);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: rgba(8, 12, 22, 0.78);
+      border-bottom: 1px solid var(--line);
     }
 
-    nav {
+    .nav {
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      padding: 18px 0;
     }
 
     .brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .brand span {
+      background: linear-gradient(90deg, var(--primary), #c2d6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    nav ul {
+      list-style: none;
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      font-size: 1.08rem;
-      letter-spacing: 0.02em;
+      gap: 22px;
+      flex-wrap: wrap;
     }
 
-    .brand-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--blue), var(--green));
-      box-shadow: 0 0 18px rgba(99,167,255,0.65);
+    nav a {
+      color: var(--muted);
+      font-size: 0.96rem;
+      transition: 0.2s ease;
     }
 
-    .nav-links,
-    .nav-actions {
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .nav-right {
       display: flex;
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
     }
 
-    .nav-links a {
-      color: var(--muted);
-      padding: 10px 12px;
-      border-radius: 999px;
-      transition: 0.2s ease;
-      font-size: 0.95rem;
+    .lang-switch {
+      display: flex;
+      gap: 8px;
     }
 
-    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .lang-btn {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-weight: 700;
+    }
+
+    .lang-btn.active,
+    .lang-btn:hover {
+      background: var(--primary);
+      color: #08111f;
+      border-color: var(--primary);
+    }
 
     .btn {
       display: inline-flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       gap: 8px;
-      padding: 13px 18px;
-      border-radius: 999px;
+      padding: 14px 20px;
+      border-radius: 12px;
       font-weight: 700;
-      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
       border: 1px solid transparent;
+      transition: 0.22s ease;
       cursor: pointer;
     }
 
-    .btn:hover { transform: translateY(-1px); }
     .btn-primary {
-      background: linear-gradient(135deg, var(--blue-strong), var(--blue));
-      color: white;
-      box-shadow: 0 16px 34px rgba(60,139,255,0.28);
+      background: linear-gradient(135deg, var(--primary), #95bdff);
+      color: #08111f;
+      box-shadow: 0 10px 24px rgba(110, 168, 255, 0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.05);
+      border-color: var(--line);
       color: var(--text);
-      border-color: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(110, 168, 255, 0.45);
+      color: var(--primary);
     }
 
     .hero {
-      padding: 72px 0 44px;
+      padding: 90px 0 70px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 28px;
-      align-items: stretch;
+      align-items: center;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 8px 14px;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.03);
-      color: #d9e8ff;
-      font-size: 0.92rem;
+      color: var(--primary);
+      font-weight: 700;
       margin-bottom: 18px;
+      padding: 8px 12px;
+      border: 1px solid rgba(110, 168, 255, 0.22);
+      border-radius: 999px;
+      background: rgba(110, 168, 255, 0.08);
+      font-size: 0.9rem;
     }
 
-    .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 4.5rem);
-      line-height: 1.03;
-      letter-spacing: -0.04em;
-      margin: 0 0 18px;
-      max-width: 11ch;
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+      letter-spacing: -1.5px;
     }
 
     .hero p {
       color: var(--muted);
       font-size: 1.08rem;
-      max-width: 63ch;
-      margin: 0 0 26px;
+      max-width: 700px;
+      margin-bottom: 28px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 22px;
+      gap: 14px;
+      margin-bottom: 28px;
     }
 
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      color: #d5e3f8;
-      font-size: 0.95rem;
+    .hero-mini {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
     }
 
-    .meta-pill {
-      padding: 9px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .glass {
+    .mini-card,
+    .card,
+    .panel,
+    .form-card,
+    .feature-box,
+    .faq-item {
       background: var(--card);
       border: 1px solid var(--line);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      border-radius: var(--radius-xl);
     }
 
-    .profile-card {
-      padding: 26px;
-      display: grid;
-      gap: 18px;
-      position: relative;
-      overflow: hidden;
+    .mini-card {
+      padding: 18px;
     }
 
-    .profile-card::before {
-      content: "";
-      position: absolute;
-      inset: -20% auto auto 65%;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle, rgba(99,167,255,0.22), transparent 68%);
-      pointer-events: none;
+    .mini-card h3 {
+      color: var(--primary);
+      font-size: 1.45rem;
+      margin-bottom: 4px;
     }
 
-    .card-label {
-      color: #d8e7ff;
-      font-size: 0.86rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .score-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .score-box,
-    .mini-card,
-    .step,
-    .faq-item,
-    .proof-box,
-    .audience-tag,
-    .compare-card,
-    .status-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: var(--radius-md);
-    }
-
-    .score-box {
-      padding: 14px;
-    }
-
-    .score-box strong {
-      display: block;
-      font-size: 1.65rem;
-      margin-top: 4px;
-    }
-
-    .score-box span,
-    .mini-card p,
-    .compare-card li,
-    .step p,
-    .faq-content,
-    .status-card p,
-    .proof-box p,
-    .section-copy,
-    .footer-copy,
-    .card-copy,
-    .audience-note {
+    .mini-card p {
+      margin: 0;
+      font-size: 0.92rem;
       color: var(--muted);
     }
 
-    .kicker {
-      color: #d9e7ff;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
+    .hero-card {
+      padding: 28px;
+      background:
+        linear-gradient(180deg, rgba(110, 168, 255, 0.10), rgba(255, 255, 255, 0.02)),
+        var(--card);
+      border: 1px solid rgba(110, 168, 255, 0.18);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card .mock-label {
+      display: inline-block;
+      margin-bottom: 18px;
       font-size: 0.84rem;
-      margin-bottom: 12px;
-      display: block;
+      font-weight: 700;
+      color: #0d1830;
+      background: linear-gradient(135deg, #bdd6ff, #c9b9ff);
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    .hero-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-card p {
+      margin-bottom: 20px;
+      color: var(--muted);
+    }
+
+    .skill-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .skill-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #dce5f4;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      flex-shrink: 0;
     }
 
     section {
-      padding: 38px 0;
+      padding: 36px 0 74px;
     }
 
-    .section-head {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: end;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 22px;
+    .section-title {
+      text-align: center;
+      margin-bottom: 38px;
     }
 
-    .section-head h2 {
-      margin: 0;
-      font-size: clamp(1.7rem, 4vw, 2.75rem);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      max-width: 16ch;
+    .section-title h2 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      margin-bottom: 10px;
+      letter-spacing: -0.8px;
     }
 
-    .section-copy {
-      max-width: 64ch;
-      margin: 0;
+    .section-title p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--muted);
     }
 
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .mini-card,
-    .status-card,
-    .compare-card,
-    .proof-box {
-      padding: 22px;
-    }
-
-    .mini-card h3,
-    .compare-card h3,
-    .status-card h3,
-    .proof-box h3,
-    .step h3 {
-      margin: 0 0 10px;
-      font-size: 1.08rem;
-    }
-
-    .status-list,
-    .audience-wrap,
-    .proof-list,
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .status-pill,
-    .audience-tag,
-    .proof-pill {
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 600;
-    }
-
-    .step {
-      padding: 22px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .step-number {
-      display: inline-flex;
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      background: rgba(99,167,255,0.14);
-      color: #dceaff;
-      margin-bottom: 14px;
-    }
-
-    .compare-card ul {
-      margin: 12px 0 0;
-      padding-left: 18px;
-    }
-
-    .clarity-box {
-      padding: 26px;
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
       gap: 20px;
     }
 
-    .clarity-split {
-      padding: 20px;
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .clarity-split h4 {
-      margin: 0 0 12px;
-      font-size: 1rem;
-    }
-
-    .clarity-before {
-      color: #d1dff2;
-      font-style: italic;
-    }
-
-    .clarity-after ul {
-      margin: 0;
-      padding-left: 18px;
-    }
-
-    .audience-tag {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .cta {
+    .card {
       padding: 26px;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 18px;
-      align-items: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
-    .cta h2 {
-      margin: 0 0 12px;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      line-height: 1.06;
-      letter-spacing: -0.04em;
-      max-width: 15ch;
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(110, 168, 255, 0.35);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: var(--primary);
+      font-size: 1.18rem;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .panel {
+      padding: 28px;
+    }
+
+    .panel h3 {
+      color: var(--primary);
+      margin-bottom: 14px;
+      font-size: 1.35rem;
+    }
+
+    .panel p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .panel ul {
+      padding-left: 18px;
+      color: #dce5f4;
+    }
+
+    .panel li {
+      margin-bottom: 10px;
+    }
+
+    .waitlist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .form-card {
+      padding: 28px;
+    }
+
+    .form-card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .form-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 0.94rem;
+      color: #dce5f4;
+      font-weight: 700;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      outline: none;
+      font: inherit;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #94a3bc;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .success-msg {
+      display: none;
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(114, 226, 168, 0.10);
+      border: 1px solid rgba(114, 226, 168, 0.24);
+      color: #c7f5df;
+      font-size: 0.95rem;
     }
 
     .faq-list {
       display: grid;
-      gap: 14px;
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .faq-item {
-      overflow: hidden;
+      padding: 22px;
     }
 
-    .faq-question {
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      color: var(--text);
-      border: 0;
-      padding: 18px 20px;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
+    .faq-item h4 {
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-size: 1.08rem;
     }
 
-    .faq-question span:last-child {
-      color: var(--blue);
-      font-size: 1.4rem;
-      line-height: 1;
+    .faq-item p {
+      color: var(--muted);
     }
 
-    .faq-content {
-      padding: 0 20px 18px;
-      display: none;
+    .cta {
+      padding-bottom: 90px;
     }
 
-    .faq-item.active .faq-content { display: block; }
-    .faq-item.active .faq-question span:last-child { transform: rotate(45deg); }
+    .cta-box {
+      padding: 34px;
+      text-align: center;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(143, 107, 255, 0.10), rgba(255, 255, 255, 0.02)),
+        var(--card);
+      border: 1px solid rgba(143, 107, 255, 0.18);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h2 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      margin-bottom: 10px;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0 auto 22px;
+    }
 
     footer {
-      padding: 26px 0 60px;
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      text-align: center;
+      color: #8ea0bf;
+      font-size: 0.95rem;
     }
 
-    .footer-box {
-      padding: 24px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .footer-copy {
-      margin: 8px 0 0;
-    }
-
-    .mobile-menu {
-      display: none;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: white;
-      border-radius: 12px;
-      padding: 10px 12px;
-      font: inherit;
-      font-weight: 700;
-    }
-
-    @media (max-width: 960px) {
+    @media (max-width: 1024px) {
       .hero-grid,
+      .split,
+      .waitlist-grid,
       .grid-3,
-      .grid-2,
-      .clarity-box,
-      .cta,
-      .footer-box {
+      .hero-mini {
         grid-template-columns: 1fr;
       }
 
-      .nav-links,
-      .nav-actions {
-        display: none;
+      .nav {
+        padding: 14px 0;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .mobile-menu { display: inline-flex; }
-
-      .mobile-open .nav-panel {
-        display: grid;
+      .nav-right,
+      nav ul {
+        width: 100%;
       }
 
-      .nav-panel {
-        display: none;
-        gap: 12px;
-        padding: 0 0 18px;
+      nav ul {
+        gap: 16px;
       }
-
-      .nav-panel a,
-      .nav-panel .btn { width: 100%; justify-content: center; }
     }
 
     @media (max-width: 640px) {
-      .hero { padding-top: 42px; }
-      .profile-card,
+      .container {
+        width: min(var(--max), calc(100% - 26px));
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .form-card,
+      .panel,
+      .card,
+      .hero-card,
       .mini-card,
-      .status-card,
-      .proof-box,
-      .step,
-      .cta,
-      .clarity-box,
-      .footer-box { padding: 18px; }
-      .score-grid { grid-template-columns: 1fr 1fr; }
-      .hero h1 { max-width: none; }
+      .faq-item,
+      .cta-box {
+        padding: 22px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="nav-wrap">
-    <div class="container">
-      <nav id="topNav">
-        <a href="#hero" class="brand">
-          <span class="brand-dot"></span>
-          <span>skillex</span>
-        </a>
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand"><span>SkillEX</span></a>
 
-        <div class="nav-links">
-          <a href="#hero">For Talent</a>
-          <a href="#companies">For Companies</a>
-          <a href="#about">About</a>
-        </div>
-
-        <div class="nav-actions">
-          <a class="btn btn-secondary" href="#early-access">Join as Talent</a>
-          <a class="btn btn-primary" href="#companies">Join as Company</a>
-        </div>
-
-        <button class="mobile-menu" id="menuToggle" aria-label="Open menu">Menu</button>
+      <nav>
+        <ul>
+          <li><a href="#home" data-en="Home" data-de="Start">Home</a></li>
+          <li><a href="#how" data-en="How It Works" data-de="So funktioniert's">How It Works</a></li>
+          <li><a href="#gamers" data-en="For Gamers" data-de="Für Gamer">For Gamers</a></li>
+          <li><a href="#companies" data-en="For Companies" data-de="Für Unternehmen">For Companies</a></li>
+          <li><a href="#waitlist" data-en="Waitlist" data-de="Warteliste">Waitlist</a></li>
+          <li><a href="#faq" data-en="FAQ" data-de="FAQ">FAQ</a></li>
+        </ul>
       </nav>
 
-      <div class="nav-panel" id="mobilePanel">
-        <a class="btn btn-secondary" href="#hero">For Talent</a>
-        <a class="btn btn-secondary" href="#companies">For Companies</a>
-        <a class="btn btn-secondary" href="#about">About</a>
-        <a class="btn btn-secondary" href="#early-access">Join as Talent</a>
-        <a class="btn btn-primary" href="#companies">Join as Company</a>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-btn active" type="button" onclick="setLanguage('en')">EN</button>
+          <button class="lang-btn" type="button" onclick="setLanguage('de')">DE</button>
+        </div>
       </div>
     </div>
-  </div>
+  </header>
 
   <main>
-    <section class="hero" id="hero">
+    <section class="hero" id="home">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">For Talent</div>
-          <h1>Build a profile companies can actually read beyond CV keywords.</h1>
-          <p>
-            skillex combines your CV, measurable performance, and role preferences into a structured profile so the right companies can understand why you fit.
+          <div class="eyebrow" data-en="Startup Concept Platform" data-de="Startup-Konzeptplattform">
+            Startup Concept Platform
+          </div>
+
+          <h1
+            data-en="The platform where gaming meets real career potential."
+            data-de="Die Plattform, auf der Gaming auf echtes Karrierepotenzial trifft."
+          >
+            The platform where gaming meets real career potential.
+          </h1>
+
+          <p
+            data-en="SkillEX helps gamers translate in-game performance into real-world career opportunities by making teamwork, strategy, communication, and discipline visible to employers."
+            data-de="SkillEX hilft Gamern dabei, In-Game-Leistung in echte Karrierechancen zu übersetzen, indem Teamwork, Strategie, Kommunikation und Disziplin für Arbeitgeber sichtbar gemacht werden."
+          >
+            SkillEX helps gamers translate in-game performance into real-world career opportunities by making teamwork, strategy, communication, and discipline visible to employers.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#early-access">Build your profile for early matching</a>
-            <a class="btn btn-secondary" href="#matching">How matching works</a>
+            <a href="#waitlist" class="btn btn-primary" data-en="Join the Waitlist" data-de="Zur Warteliste">
+              Join the Waitlist
+            </a>
+            <a href="#companies" class="btn btn-secondary" data-en="Explore for Companies" data-de="Für Unternehmen entdecken">
+              Explore for Companies
+            </a>
           </div>
 
-          <div class="hero-meta">
-            <div class="meta-pill">MVP in progress</div>
-            <div class="meta-pill">Takes 3–5 minutes</div>
-            <div class="meta-pill">Private by default</div>
-            <div class="meta-pill">Edit anytime</div>
+          <div class="hero-mini">
+            <div class="mini-card">
+              <h3>2</h3>
+              <p data-en="Main User Groups" data-de="Hauptzielgruppen">Main User Groups</p>
+            </div>
+            <div class="mini-card">
+              <h3>24/7</h3>
+              <p data-en="Digital Access" data-de="Digitaler Zugriff">Digital Access</p>
+            </div>
+            <div class="mini-card">
+              <h3>AI</h3>
+              <p data-en="Skill Translation Vision" data-de="Vision der Skill-Übersetzung">Skill Translation Vision</p>
+            </div>
           </div>
         </div>
 
-        <div class="glass profile-card">
-          <span class="card-label">What companies actually see</span>
-          <h2 style="margin:0; font-size:1.7rem; line-height:1.1;">Performance-ready profile</h2>
-          <p class="card-copy" style="margin:0;">A structured profile that combines CV context, performance proof, and matching-ready signals.</p>
+        <div class="hero-card">
+          <div class="mock-label" data-en="Platform Preview" data-de="Plattform-Vorschau">Platform Preview</div>
+          <h3 data-en="Why SkillEX?" data-de="Warum SkillEX?">Why SkillEX?</h3>
+          <p
+            data-en="Gaming builds more than entertainment. It develops high-value skills that can be recognized in professional environments."
+            data-de="Gaming ist mehr als Unterhaltung. Es entwickelt wertvolle Fähigkeiten, die auch im Berufsleben relevant sind."
+          >
+            Gaming builds more than entertainment. It develops high-value skills that can be recognized in professional environments.
+          </p>
 
-          <div class="score-grid">
-            <div class="score-box">
-              <span>Match-ready</span>
-              <strong>86</strong>
-            </div>
-            <div class="score-box">
-              <span>Hard fit</span>
-              <strong>92</strong>
-            </div>
-            <div class="score-box">
-              <span>Performance</span>
-              <strong>78</strong>
-            </div>
-            <div class="score-box">
-              <span>Reliability</span>
-              <strong>88</strong>
-            </div>
+          <ul class="skill-list">
+            <li>
+              <span class="dot"></span>
+              <span data-en="Show transferable skills through gaming profiles" data-de="Übertragbare Fähigkeiten durch Gaming-Profile sichtbar machen">
+                Show transferable skills through gaming profiles
+              </span>
+            </li>
+            <li>
+              <span class="dot"></span>
+              <span data-en="Help companies discover disciplined, competitive talent" data-de="Unternehmen helfen, disziplinierte und leistungsstarke Talente zu finden">
+                Help companies discover disciplined, competitive talent
+              </span>
+            </li>
+            <li>
+              <span class="dot"></span>
+              <span data-en="Connect identity, passion, and employability" data-de="Identität, Leidenschaft und Employability verbinden">
+                Connect identity, passion, and employability
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <div class="section-title">
+          <h2 data-en="How SkillEX Works" data-de="So funktioniert SkillEX">How SkillEX Works</h2>
+          <p
+            data-en="The concept is simple: gamers create profiles, SkillEX translates their experience into transferable skills, and companies discover candidates through a fresh talent pipeline."
+            data-de="Das Konzept ist einfach: Gamer erstellen Profile, SkillEX übersetzt ihre Erfahrung in übertragbare Fähigkeiten und Unternehmen entdecken Kandidaten über einen neuen Talentpool."
+          >
+            The concept is simple: gamers create profiles, SkillEX translates their experience into transferable skills, and companies discover candidates through a fresh talent pipeline.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3 data-en="1. Build Your Profile" data-de="1. Profil erstellen">1. Build Your Profile</h3>
+            <p
+              data-en="Users add their favorite games, roles, ranks, competitive experience, and personal strengths."
+              data-de="Nutzer fügen ihre Spiele, Rollen, Ränge, Competitive-Erfahrung und persönlichen Stärken hinzu."
+            >
+              Users add their favorite games, roles, ranks, competitive experience, and personal strengths.
+            </p>
           </div>
 
-          <div class="mini-card" style="padding:18px;">
-            <h3 style="margin:0 0 8px;">CV + profile</h3>
-            <p style="margin:0;">BA student, working student marketing, creator projects, salary and location preferences saved.</p>
+          <div class="card">
+            <h3 data-en="2. Translate Your Skills" data-de="2. Skills übersetzen">2. Translate Your Skills</h3>
+            <p
+              data-en="SkillEX highlights communication, leadership, strategy, problem-solving, and adaptability."
+              data-de="SkillEX macht Kommunikation, Leadership, Strategie, Problemlösung und Anpassungsfähigkeit sichtbar."
+            >
+              SkillEX highlights communication, leadership, strategy, problem-solving, and adaptability.
+            </p>
           </div>
 
-          <div class="mini-card" style="padding:18px;">
-            <h3 style="margin:0 0 8px;">Performance proof</h3>
-            <p style="margin:0;">Tournament results, portfolio links, repeat activity, and extra talents mapped to job signals.</p>
-          </div>
-
-          <div class="mini-card" style="padding:18px;">
-            <h3 style="margin:0 0 8px;">Matching structure</h3>
-            <p style="margin:0;">Teamwork under pressure, measured results, leadership, pattern recognition, and explainable signals.</p>
+          <div class="card">
+            <h3 data-en="3. Create Opportunities" data-de="3. Chancen schaffen">3. Create Opportunities</h3>
+            <p
+              data-en="Companies can explore talent profiles and identify candidates with performance-driven habits."
+              data-de="Unternehmen können Talentprofile durchsuchen und Kandidaten mit leistungsorientierten Gewohnheiten finden."
+            >
+              Companies can explore talent profiles and identify candidates with performance-driven habits.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section>
+    <section id="gamers">
       <div class="container">
-        <div class="grid-3">
-          <div class="status-card">
-            <span class="kicker">What is already live</span>
-            <h3>Email signup and profile creation</h3>
-            <p>Structured talent profile with achievements, founder-led MVP, and transparent product progress.</p>
-          </div>
-          <div class="status-card">
-            <span class="kicker">What comes next</span>
-            <h3>Explainable matching rollout</h3>
-            <p>Recruiter-facing shortlist views, stronger verification signals, and clearer fit explanations.</p>
-          </div>
-          <div class="status-card">
-            <span class="kicker">Company-safe by default</span>
-            <h3>Structured instead of random</h3>
-            <p>Role, location, and compensation preferences are captured clearly, with evidence links that strengthen matching confidence.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="different">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="kicker">Why skillex feels different</span>
-            <h2>Not a replacement for your CV — a way to make hidden signals visible.</h2>
-          </div>
-          <p class="section-copy">The point is not to replace your CV. The point is to make important signals visible that traditional recruiting usually misses.</p>
+        <div class="section-title">
+          <h2 data-en="For Gamers" data-de="Für Gamer">For Gamers</h2>
+          <p
+            data-en="Gaming is more than a hobby. It can demonstrate real strengths that deserve recognition in the job market."
+            data-de="Gaming ist mehr als ein Hobby. Es kann echte Stärken zeigen, die auf dem Arbeitsmarkt Anerkennung verdienen."
+          >
+            Gaming is more than a hobby. It can demonstrate real strengths that deserve recognition in the job market.
+          </p>
         </div>
 
-        <div class="grid-3">
-          <article class="mini-card">
-            <h3>Structured instead of vague</h3>
-            <p>Your desired roles, work preferences, achievements, salary expectations, and performance signals live in one profile.</p>
-          </article>
-          <article class="mini-card">
-            <h3>Built for explainable matching</h3>
-            <p>Companies do not just see a headline. They see why your background, proof, and strengths map to a role.</p>
-          </article>
-          <article class="mini-card">
-            <h3>Made for unconventional talent</h3>
-            <p>Esports, chess, debate, endurance, coding competitions, and creator work can be translated into workplace-relevant signals.</p>
-          </article>
+        <div class="split">
+          <div class="panel">
+            <h3 data-en="Why gamers would join" data-de="Warum Gamer mitmachen würden">Why gamers would join</h3>
+            <ul>
+              <li data-en="Create a profile based on gaming experience" data-de="Ein Profil auf Basis der eigenen Gaming-Erfahrung erstellen">
+                Create a profile based on gaming experience
+              </li>
+              <li data-en="Show soft skills in a fresh and modern way" data-de="Soft Skills auf eine moderne Art sichtbar machen">
+                Show soft skills in a fresh and modern way
+              </li>
+              <li data-en="Stand out beyond a traditional CV" data-de="Sich über einen klassischen Lebenslauf hinaus abheben">
+                Stand out beyond a traditional CV
+              </li>
+              <li data-en="Get discovered by companies that value mindset and performance" data-de="Von Unternehmen entdeckt werden, die Mindset und Leistung schätzen">
+                Get discovered by companies that value mindset and performance
+              </li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3 data-en="Profile highlights" data-de="Profil-Highlights">Profile highlights</h3>
+            <p
+              data-en="A SkillEX profile can include games played, preferred roles, competitive background, teamwork examples, and translated strengths."
+              data-de="Ein SkillEX-Profil kann gespielte Games, bevorzugte Rollen, Competitive-Hintergrund, Teamwork-Beispiele und übersetzte Stärken enthalten."
+            >
+              A SkillEX profile can include games played, preferred roles, competitive background, teamwork examples, and translated strengths.
+            </p>
+            <p
+              data-en="This helps gamers present themselves in a more complete and differentiated way."
+              data-de="Das hilft Gamern, sich vollständiger und differenzierter zu präsentieren."
+            >
+              This helps gamers present themselves in a more complete and differentiated way.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="companies">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="kicker">Traditional CV recruiting vs skillex</span>
-            <h2>One side hides context. The other makes it readable.</h2>
-          </div>
+        <div class="section-title">
+          <h2 data-en="For Companies" data-de="Für Unternehmen">For Companies</h2>
+          <p
+            data-en="SkillEX helps employers discover motivated, coachable, and high-performing candidates through gaming-based indicators."
+            data-de="SkillEX hilft Arbeitgebern dabei, motivierte, lernfähige und leistungsstarke Kandidaten über gamingbasierte Merkmale zu entdecken."
+          >
+            SkillEX helps employers discover motivated, coachable, and high-performing candidates through gaming-based indicators.
+          </p>
         </div>
 
-        <div class="grid-2">
-          <article class="compare-card">
-            <h3>Traditional CV recruiting</h3>
+        <div class="split">
+          <div class="panel">
+            <h3 data-en="Benefits for employers" data-de="Vorteile für Arbeitgeber">Benefits for employers</h3>
             <ul>
-              <li>Optimized for titles and keywords</li>
-              <li>Achievements often stay buried in text</li>
-              <li>Hard to show pressure-tested performance</li>
-              <li>Little context on goals, preferences, or upside</li>
+              <li data-en="Access a new and overlooked talent pool" data-de="Zugang zu einem neuen und oft übersehenen Talentpool">
+                Access a new and overlooked talent pool
+              </li>
+              <li data-en="Identify teamwork, communication, and adaptability" data-de="Teamwork, Kommunikation und Anpassungsfähigkeit erkennen">
+                Identify teamwork, communication, and adaptability
+              </li>
+              <li data-en="Find candidates with discipline and competitive drive" data-de="Kandidaten mit Disziplin und Leistungswillen finden">
+                Find candidates with discipline and competitive drive
+              </li>
+              <li data-en="Build more diverse and modern hiring pipelines" data-de="Modernere und vielfältigere Recruiting-Pipelines aufbauen">
+                Build more diverse and modern hiring pipelines
+              </li>
             </ul>
-          </article>
-          <article class="compare-card">
-            <h3>skillex</h3>
+          </div>
+
+          <div class="panel">
+            <h3 data-en="Target industries" data-de="Zielbranchen">Target industries</h3>
             <ul>
-              <li>CV plus structured performance signals</li>
-              <li>Measured achievements can be surfaced directly</li>
-              <li>Transferable strengths are visible and explainable</li>
-              <li>Role, location, and compensation preferences are part of matching</li>
+              <li data-en="Esports and gaming organizations" data-de="Esports- und Gaming-Organisationen">
+                Esports and gaming organizations
+              </li>
+              <li data-en="Technology and software companies" data-de="Technologie- und Softwareunternehmen">
+                Technology and software companies
+              </li>
+              <li data-en="Digital marketing and media teams" data-de="Digitale Marketing- und Medienteams">
+                Digital marketing and media teams
+              </li>
+              <li data-en="Startups looking for ambitious, coachable talent" data-de="Startups, die ambitionierte und lernfähige Talente suchen">
+                Startups looking for ambitious, coachable talent
+              </li>
             </ul>
-          </article>
-        </div>
-      </div>
-    </section>
 
-    <section>
-      <div class="container glass clarity-box">
-        <div class="clarity-split">
-          <span class="kicker">Profile clarity</span>
-          <h4>Before</h4>
-          <p class="clarity-before">“Marketing working student with gaming background and some side projects.”</p>
-        </div>
-        <div class="clarity-split clarity-after">
-          <span class="kicker">After</span>
-          <ul>
-            <li>Built creator campaigns and content systems</li>
-            <li>Competitive experience under pressure</li>
-            <li>Interested in growth, content, and operations roles</li>
-            <li>Location and compensation preferences already saved</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="matching">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="kicker">How matching works for talent</span>
-            <h2>Clear input. Better signal. More understandable fit.</h2>
-          </div>
-          <p class="section-copy">The goal is not vague AI magic. The goal is a more understandable recruiting process on both sides.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="step">
-            <div class="step-number">01</div>
-            <h3>CV + profile</h3>
-            <p>Add your role interests, work preferences, experience, education, and links in one structured profile.</p>
-          </article>
-          <article class="step">
-            <div class="step-number">02</div>
-            <h3>Performance signals</h3>
-            <p>Add measurable achievements, extra talents, and verification links so stronger evidence can improve matching confidence.</p>
-          </article>
-          <article class="step">
-            <div class="step-number">03</div>
-            <h3>Role matching</h3>
-            <p>Companies define must-haves, desired strengths, work style, and salary range so the fit is understandable on both sides.</p>
-          </article>
-        </div>
-
-        <div class="status-card" style="margin-top:18px;">
-          <span class="kicker">After signup</span>
-          <div class="status-list">
-            <span class="status-pill">Start with email and profile creation</span>
-            <span class="status-pill">Save your profile step by step</span>
-            <span class="status-pill">Stay ready for explainable matching rollout</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="kicker">Who skillex is built for</span>
-            <h2>High-performance backgrounds look different, but the signal is real.</h2>
-          </div>
-          <p class="section-copy">The common thread is measurable effort, pattern recognition, resilience, and execution.</p>
-        </div>
-
-        <div class="audience-wrap">
-          <span class="audience-tag">esports</span>
-          <span class="audience-tag">coding competitions</span>
-          <span class="audience-tag">debate &amp; public speaking</span>
-          <span class="audience-tag">endurance &amp; ultra</span>
-          <span class="audience-tag">content creation</span>
-          <span class="audience-tag">chess &amp; strategy</span>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="grid-2">
-          <div class="proof-box">
-            <span class="kicker">Proof the product is real</span>
-            <h3>Founder-led, team-backed, and already live in MVP form.</h3>
-            <p>The current product includes waitlist signup, talent profiles, company onboarding, and a working explainable matching structure.</p>
-            <div class="proof-list" style="margin-top:14px;">
-              <span class="proof-pill">Real founder background</span>
-              <span class="proof-pill">Real team page</span>
-              <span class="proof-pill">Real roadmap status</span>
-              <span class="proof-pill">Real matching logic</span>
+            <div style="margin-top: 18px;">
+              <a href="#waitlist" class="btn btn-primary" data-en="Join as a Company" data-de="Als Unternehmen beitreten">
+                Join as a Company
+              </a>
             </div>
           </div>
-
-          <div class="proof-box" id="about">
-            <span class="kicker">About skillex</span>
-            <h3>Hire real talent. Get discovered beyond your CV.</h3>
-            <p>skillex was born from a simple observation: the best talent is often overlooked because it does not fit classic filters. We are building a platform that changes that — modern, direct, and human.</p>
-            <p style="margin-top:12px;">Founder-led and transparent: shipping in MVP mode, collecting active feedback from early-access users, and sharing clear progress updates before launch.</p>
-          </div>
         </div>
       </div>
     </section>
 
-    <section id="early-access">
-      <div class="container glass cta">
-        <div>
-          <span class="kicker">Early access</span>
-          <h2>Build now, so the right companies can understand you later.</h2>
-          <p class="section-copy" style="margin:0;">skillex is strongest when your profile already contains the signals a company would otherwise never notice in a CV filter.</p>
+    <section id="waitlist">
+      <div class="container">
+        <div class="section-title">
+          <h2 data-en="Join the Waitlist" data-de="Zur Warteliste">Join the Waitlist</h2>
+          <p
+            data-en="Whether you are a gamer or a company, SkillEX lets you register your interest through the waitlist forms below."
+            data-de="Egal ob du Gamer oder Unternehmen bist, über die Wartelisten-Formulare unten kannst du dein Interesse an SkillEX eintragen."
+          >
+            Whether you are a gamer or a company, SkillEX lets you register your interest through the waitlist forms below.
+          </p>
         </div>
-        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-start; align-items:center;">
-          <a class="btn btn-primary" href="#topNav">Build your profile</a>
-          <a class="btn btn-secondary" href="#about">Read more about us</a>
+
+        <div class="waitlist-grid">
+          <div class="form-card">
+            <h3 data-en="Gamer Waitlist" data-de="Gamer-Warteliste">Gamer Waitlist</h3>
+            <p
+              data-en="Join as a gamer and show how your in-game experience can create real-world value."
+              data-de="Trage dich als Gamer ein und zeige, wie deine Spielerfahrung echten Mehrwert schaffen kann."
+            >
+              Join as a gamer and show how your in-game experience can create real-world value.
+            </p>
+
+            <form id="gamerForm">
+              <div class="form-group">
+                <label for="gamerName" data-en="Full Name" data-de="Vollständiger Name">Full Name</label>
+                <input type="text" id="gamerName" required />
+              </div>
+
+              <div class="form-group">
+                <label for="gamerEmail" data-en="Email Address" data-de="E-Mail-Adresse">Email Address</label>
+                <input type="email" id="gamerEmail" required />
+              </div>
+
+              <div class="form-group">
+                <label for="gamerGame" data-en="Main Game" data-de="Hauptspiel">Main Game</label>
+                <input type="text" id="gamerGame" required />
+              </div>
+
+              <div class="form-group">
+                <label for="gamerLevel" data-en="Skill Level / Rank" data-de="Skill-Level / Rang">Skill Level / Rank</label>
+                <input type="text" id="gamerLevel" />
+              </div>
+
+              <button type="submit" class="btn btn-primary" data-en="Join Gamer Waitlist" data-de="Gamer-Warteliste beitreten">
+                Join Gamer Waitlist
+              </button>
+
+              <div class="success-msg" id="gamerSuccess"
+                data-en="Thanks! Your gamer waitlist entry has been submitted."
+                data-de="Danke! Dein Eintrag für die Gamer-Warteliste wurde abgeschickt.">
+                Thanks! Your gamer waitlist entry has been submitted.
+              </div>
+            </form>
+          </div>
+
+          <div class="form-card">
+            <h3 data-en="Company Waitlist" data-de="Unternehmens-Warteliste">Company Waitlist</h3>
+            <p
+              data-en="Join as a company and express interest in discovering gaming-based talent through SkillEX."
+              data-de="Trage dich als Unternehmen ein und zeige Interesse daran, gamingbasiertes Talent über SkillEX zu entdecken."
+            >
+              Join as a company and express interest in discovering gaming-based talent through SkillEX.
+            </p>
+
+            <form id="companyForm">
+              <div class="form-group">
+                <label for="companyName" data-en="Company Name" data-de="Firmenname">Company Name</label>
+                <input type="text" id="companyName" required />
+              </div>
+
+              <div class="form-group">
+                <label for="companyEmail" data-en="Business Email" data-de="Geschäftliche E-Mail">Business Email</label>
+                <input type="email" id="companyEmail" required />
+              </div>
+
+              <div class="form-group">
+                <label for="companyIndustry" data-en="Industry" data-de="Branche">Industry</label>
+                <input type="text" id="companyIndustry" required />
+              </div>
+
+              <div class="form-group">
+                <label for="companyNeeds" data-en="Hiring Needs" data-de="Hiring-Bedarf">Hiring Needs</label>
+                <textarea id="companyNeeds"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" data-en="Join Company Waitlist" data-de="Unternehmens-Warteliste beitreten">
+                Join Company Waitlist
+              </button>
+
+              <div class="success-msg" id="companySuccess"
+                data-en="Thanks! Your company waitlist entry has been submitted."
+                data-de="Danke! Dein Eintrag für die Unternehmens-Warteliste wurde abgeschickt.">
+                Thanks! Your company waitlist entry has been submitted.
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="faq">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="kicker">FAQ for Talent</span>
-            <h2>Common questions from early users.</h2>
-          </div>
+        <div class="section-title">
+          <h2 data-en="Frequently Asked Questions" data-de="Häufig gestellte Fragen">Frequently Asked Questions</h2>
+          <p
+            data-en="These are some of the main questions users might have about the SkillEX concept."
+            data-de="Das sind einige der wichtigsten Fragen, die Nutzer zum SkillEX-Konzept haben könnten."
+          >
+            These are some of the main questions users might have about the SkillEX concept.
+          </p>
         </div>
 
         <div class="faq-list">
-          <div class="faq-item active">
-            <button class="faq-question"><span>Do I need to upload my CV?</span><span>+</span></button>
-            <div class="faq-content">You can start with structured profile details and add CV context where relevant. The goal is not just uploading a document — it is making your signal more readable.</div>
-          </div>
           <div class="faq-item">
-            <button class="faq-question"><span>Is my profile publicly visible?</span><span>+</span></button>
-            <div class="faq-content">No. The concept is private by default until visibility and matching rules are expanded. That makes early profile building feel safer.</div>
+            <h4 data-en="What is SkillEX?" data-de="Was ist SkillEX?">What is SkillEX?</h4>
+            <p
+              data-en="SkillEX is a concept platform that connects gaming experience with career development by translating in-game strengths into professional value."
+              data-de="SkillEX ist eine Konzeptplattform, die Gaming-Erfahrung mit Karriereentwicklung verbindet, indem In-Game-Stärken in beruflichen Mehrwert übersetzt werden."
+            >
+              SkillEX is a concept platform that connects gaming experience with career development by translating in-game strengths into professional value.
+            </p>
           </div>
+
           <div class="faq-item">
-            <button class="faq-question"><span>What does gaming have to do with it?</span><span>+</span></button>
-            <div class="faq-content">Gaming can produce measurable behavior under pressure, teamwork, leadership, consistency, and problem-solving. skillex translates those signals into professional context.</div>
+            <h4 data-en="Who is SkillEX for?" data-de="Für wen ist SkillEX?">Who is SkillEX for?</h4>
+            <p
+              data-en="It is designed for gamers seeking opportunities and companies looking for new, performance-driven talent."
+              data-de="Es ist für Gamer gedacht, die Chancen suchen, und für Unternehmen, die neue, leistungsorientierte Talente finden wollen."
+            >
+              It is designed for gamers seeking opportunities and companies looking for new, performance-driven talent.
+            </p>
           </div>
+
           <div class="faq-item">
-            <button class="faq-question"><span>Is skillex free for talent?</span><span>+</span></button>
-            <div class="faq-content">For an MVP and early-access concept page, that is the clearest positioning: talent users can join early and build profiles without needing a paid barrier.</div>
+            <h4 data-en="Is this a finished product?" data-de="Ist das schon ein fertiges Produkt?">Is this a finished product?</h4>
+            <p
+              data-en="At this stage, SkillEX is presented as a polished startup concept website that explains the platform vision, audience, and value proposition."
+              data-de="Aktuell wird SkillEX als ausgearbeitete Startup-Konzept-Website präsentiert, die Vision, Zielgruppe und Nutzen der Plattform erklärt."
+            >
+              At this stage, SkillEX is presented as a polished startup concept website that explains the platform vision, audience, and value proposition.
+            </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <h2 data-en="SkillEX is built for the future of talent discovery." data-de="SkillEX ist für die Zukunft der Talententdeckung gebaut.">
+            SkillEX is built for the future of talent discovery.
+          </h2>
+          <p
+            data-en="This version of the website represents a strong step toward a realistic startup landing page with clearer messaging, better user flow, and working bilingual functionality."
+            data-de="Diese Version der Website ist ein starker Schritt in Richtung einer realistischen Startup-Landingpage mit klarerem Messaging, besserem User-Flow und funktionierender Zweisprachigkeit."
+          >
+            This version of the website represents a strong step toward a realistic startup landing page with clearer messaging, better user flow, and working bilingual functionality.
+          </p>
+
+          <a href="#home" class="btn btn-primary" data-en="Back to Top" data-de="Zurück nach oben">Back to Top</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container glass footer-box">
-      <div>
-        <div class="brand">
-          <span class="brand-dot"></span>
-          <span>skillex</span>
-        </div>
-        <p class="footer-copy">Hire real talent. Get discovered beyond your CV.</p>
-        <p class="footer-copy">© 2026 skillex. All rights reserved.</p>
-      </div>
-      <div class="footer-links">
-        <a class="btn btn-secondary" href="#hero">For Talent</a>
-        <a class="btn btn-secondary" href="#companies">For Companies</a>
-        <a class="btn btn-secondary" href="#about">About</a>
-      </div>
+    <div class="container">
+      <p data-en="© 2026 SkillEX. Built for project development." data-de="© 2026 SkillEX. Erstellt für die Projektentwicklung.">
+        © 2026 SkillEX. Built for project development.
+      </p>
     </div>
   </footer>
 
   <script>
-    const toggle = document.getElementById('menuToggle');
-    const navWrap = document.querySelector('.nav-wrap');
-    const faqItems = document.querySelectorAll('.faq-item');
+    function setLanguage(lang) {
+      const elements = document.querySelectorAll("[data-en]");
+      const buttons = document.querySelectorAll(".lang-btn");
 
-    toggle?.addEventListener('click', () => {
-      navWrap.classList.toggle('mobile-open');
-    });
-
-    document.querySelectorAll('#mobilePanel a').forEach(link => {
-      link.addEventListener('click', () => navWrap.classList.remove('mobile-open'));
-    });
-
-    faqItems.forEach(item => {
-      const button = item.querySelector('.faq-question');
-      button.addEventListener('click', () => {
-        item.classList.toggle('active');
+      elements.forEach((el) => {
+        const value = el.getAttribute(`data-${lang}`);
+        if (value) {
+          el.textContent = value;
+        }
       });
+
+      buttons.forEach((btn) => btn.classList.remove("active"));
+
+      if (lang === "en") {
+        buttons[0].classList.add("active");
+        document.documentElement.lang = "en";
+      } else {
+        buttons[1].classList.add("active");
+        document.documentElement.lang = "de";
+      }
+
+      const gamerSuccess = document.getElementById("gamerSuccess");
+      const companySuccess = document.getElementById("companySuccess");
+
+      if (gamerSuccess.style.display === "block") {
+        gamerSuccess.textContent = gamerSuccess.getAttribute(`data-${lang}`);
+      }
+
+      if (companySuccess.style.display === "block") {
+        companySuccess.textContent = companySuccess.getAttribute(`data-${lang}`);
+      }
+    }
+
+    document.getElementById("gamerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const success = document.getElementById("gamerSuccess");
+      success.style.display = "block";
+      this.reset();
+    });
+
+    document.getElementById("companyForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const success = document.getElementById("companySuccess");
+      success.style.display = "block";
+      this.reset();
     });
   </script>
 </body>
