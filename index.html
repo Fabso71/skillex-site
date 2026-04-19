@@ -3,27 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkillEX | Where Gaming Meets Career</title>
-  <meta
-    name="description"
-    content="SkillEX helps gamers turn in-game performance into real-world career opportunities."
-  />
-
+  <title>SkillEX | Gaming Meets Career</title>
+  <meta name="description" content="SkillEX helps gamers turn in-game performance into real-world career opportunities." />
   <style>
     :root {
-      --bg: #0b1020;
+      --bg: #09101d;
       --bg-soft: #11182b;
-      --card: rgba(18, 26, 40, 0.82);
+      --card: rgba(17, 24, 43, 0.84);
+      --card-2: rgba(22, 31, 54, 0.92);
       --text: #f4f7fb;
       --muted: #aab6cf;
       --line: rgba(255, 255, 255, 0.08);
       --primary: #6ea8ff;
       --primary-2: #8f6bff;
-      --success: #72e2a8;
-      --danger: #ff7676;
+      --accent: #72e2a8;
       --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
-      --radius: 20px;
-      --max: 1200px;
+      --radius: 22px;
+      --max: 1180px;
     }
 
     * {
@@ -39,11 +35,12 @@
     body {
       font-family: Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(110, 168, 255, 0.12), transparent 30%),
-        radial-gradient(circle at top right, rgba(143, 107, 255, 0.10), transparent 28%),
-        linear-gradient(180deg, #09101d 0%, #0b1020 100%);
+        radial-gradient(circle at top left, rgba(110, 168, 255, 0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(143, 107, 255, 0.14), transparent 24%),
+        linear-gradient(180deg, #07101d 0%, #0b1020 100%);
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
@@ -51,13 +48,8 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
     .container {
-      width: min(var(--max), calc(100% - 40px));
+      width: min(var(--max), calc(100% - 34px));
       margin: 0 auto;
     }
 
@@ -66,26 +58,38 @@
       top: 0;
       z-index: 1000;
       backdrop-filter: blur(14px);
-      background: rgba(8, 12, 22, 0.78);
+      background: rgba(7, 12, 22, 0.78);
       border-bottom: 1px solid var(--line);
     }
 
     .nav {
-      min-height: 78px;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
     .brand {
-      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.45rem;
       font-weight: 800;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
     }
 
-    .brand span {
-      background: linear-gradient(90deg, var(--primary), #c2d6ff);
+    .brand-mark {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 0 18px rgba(110, 168, 255, 0.55);
+    }
+
+    .brand span:last-child {
+      background: linear-gradient(90deg, var(--primary), #d7e5ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -94,9 +98,9 @@
     nav ul {
       list-style: none;
       display: flex;
-      align-items: center;
       gap: 22px;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     nav a {
@@ -153,9 +157,9 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), #95bdff);
-      color: #08111f;
-      box-shadow: 0 10px 24px rgba(110, 168, 255, 0.22);
+      background: linear-gradient(135deg, var(--primary), #9fc6ff);
+      color: #07101d;
+      box-shadow: 0 10px 26px rgba(110, 168, 255, 0.25);
     }
 
     .btn-primary:hover {
@@ -165,21 +169,21 @@
     .btn-secondary {
       border-color: var(--line);
       color: var(--text);
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255,255,255,0.03);
     }
 
     .btn-secondary:hover {
-      border-color: rgba(110, 168, 255, 0.45);
+      border-color: rgba(110,168,255,0.45);
       color: var(--primary);
     }
 
     .hero {
-      padding: 90px 0 70px;
+      padding: 88px 0 58px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.08fr 0.92fr;
       gap: 28px;
       align-items: center;
     }
@@ -192,80 +196,95 @@
       font-weight: 700;
       margin-bottom: 18px;
       padding: 8px 12px;
-      border: 1px solid rgba(110, 168, 255, 0.22);
+      border: 1px solid rgba(110,168,255,0.22);
       border-radius: 999px;
-      background: rgba(110, 168, 255, 0.08);
+      background: rgba(110,168,255,0.08);
       font-size: 0.9rem;
     }
 
     h1 {
-      font-size: clamp(2.2rem, 5vw, 4.5rem);
-      line-height: 1.05;
+      font-size: clamp(2.4rem, 5vw, 4.9rem);
+      line-height: 1.02;
       margin-bottom: 18px;
-      letter-spacing: -1.5px;
+      letter-spacing: -1.8px;
+      max-width: 11ch;
     }
 
     .hero p {
       color: var(--muted);
       font-size: 1.08rem;
-      max-width: 700px;
-      margin-bottom: 28px;
+      max-width: 640px;
+      margin-bottom: 26px;
     }
 
     .hero-actions {
       display: flex;
+      gap: 14px;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
 
-    .hero-mini {
+    .stats-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 14px;
     }
 
-    .mini-card,
+    .stat-card,
+    .hero-card,
     .card,
     .panel,
     .form-card,
-    .feature-box,
-    .faq-item {
+    .rank-card,
+    .faq-item,
+    .cta-box,
+    .visual-card {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
 
-    .mini-card {
+    .stat-card {
       padding: 18px;
+      text-align: center;
     }
 
-    .mini-card h3 {
+    .stat-card h3 {
       color: var(--primary);
-      font-size: 1.45rem;
+      font-size: 1.55rem;
       margin-bottom: 4px;
     }
 
-    .mini-card p {
-      margin: 0;
-      font-size: 0.92rem;
+    .stat-card p {
       color: var(--muted);
+      font-size: 0.92rem;
     }
 
     .hero-card {
-      padding: 28px;
+      padding: 26px;
       background:
-        linear-gradient(180deg, rgba(110, 168, 255, 0.10), rgba(255, 255, 255, 0.02)),
-        var(--card);
-      border: 1px solid rgba(110, 168, 255, 0.18);
-      border-radius: 26px;
-      box-shadow: var(--shadow);
+        linear-gradient(180deg, rgba(110,168,255,0.10), rgba(255,255,255,0.02)),
+        var(--card-2);
+      border: 1px solid rgba(110,168,255,0.18);
+      overflow: hidden;
+      position: relative;
     }
 
-    .hero-card .mock-label {
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -60px;
+      top: -50px;
+      background: radial-gradient(circle, rgba(143,107,255,0.25), transparent 65%);
+      pointer-events: none;
+    }
+
+    .mock-label {
       display: inline-block;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       font-size: 0.84rem;
       font-weight: 700;
       color: #0d1830;
@@ -275,51 +294,49 @@
     }
 
     .hero-card h3 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       margin-bottom: 10px;
     }
 
     .hero-card p {
-      margin-bottom: 20px;
       color: var(--muted);
+      margin-bottom: 18px;
     }
 
-    .skill-list {
-      list-style: none;
-      display: grid;
-      gap: 12px;
-    }
-
-    .skill-list li {
+    .controller {
+      width: 100%;
+      min-height: 220px;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(110,168,255,0.22), transparent 20%),
+        radial-gradient(circle at 70% 25%, rgba(143,107,255,0.25), transparent 18%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.06);
       display: flex;
       align-items: center;
-      gap: 10px;
-      color: #dce5f4;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--primary-2));
-      flex-shrink: 0;
+    .controller svg {
+      width: 78%;
+      max-width: 320px;
+      height: auto;
+      filter: drop-shadow(0 16px 30px rgba(0,0,0,0.35));
     }
 
     section {
-      padding: 36px 0 74px;
+      padding: 26px 0 70px;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 38px;
+      margin-bottom: 34px;
     }
 
     .section-title h2 {
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-size: clamp(1.9rem, 3vw, 2.9rem);
       margin-bottom: 10px;
       letter-spacing: -0.8px;
     }
@@ -330,51 +347,105 @@
       color: var(--muted);
     }
 
+    .rank-card {
+      padding: 26px;
+      margin-top: 12px;
+    }
+
+    .rank-card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .rank-card-top h3 {
+      font-size: 1.45rem;
+    }
+
+    .rank-pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      color: #06101d;
+      background: linear-gradient(135deg, var(--accent), #c0ffe2);
+    }
+
+    .rank-track {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .rank-box {
+      padding: 18px;
+      border-radius: 18px;
+      text-align: center;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .rank-box .emoji {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .rank-box strong {
+      display: block;
+      font-size: 1.08rem;
+      margin-bottom: 4px;
+    }
+
+    .rank-box span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .arrow {
+      font-size: 1.7rem;
+      color: var(--primary);
+      text-align: center;
+    }
+
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
-    .card {
-      padding: 26px;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(110, 168, 255, 0.35);
-    }
-
-    .card h3 {
-      margin-bottom: 12px;
-      color: var(--primary);
-      font-size: 1.18rem;
-    }
-
-    .card p {
-      color: var(--muted);
-    }
-
-    .split {
+    .grid-2 {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: 22px;
     }
 
-    .panel {
-      padding: 28px;
+    .card,
+    .panel,
+    .visual-card,
+    .form-card,
+    .faq-item {
+      padding: 24px;
     }
 
-    .panel h3 {
+    .card h3,
+    .panel h3,
+    .visual-card h3,
+    .form-card h3 {
       color: var(--primary);
-      margin-bottom: 14px;
-      font-size: 1.35rem;
+      margin-bottom: 12px;
+      font-size: 1.2rem;
     }
 
-    .panel p {
+    .card p,
+    .panel p,
+    .visual-card p,
+    .form-card p,
+    .faq-item p {
       color: var(--muted);
-      margin-bottom: 14px;
     }
 
     .panel ul {
@@ -386,26 +457,41 @@
       margin-bottom: 10px;
     }
 
+    .icon-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .icon-pill {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      font-weight: 700;
+    }
+
+    .mini-visual {
+      margin-top: 18px;
+      min-height: 180px;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(110,168,255,0.2), transparent 20%),
+        radial-gradient(circle at 70% 30%, rgba(143,107,255,0.18), transparent 16%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.2rem;
+    }
+
     .waitlist-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 22px;
       align-items: start;
-    }
-
-    .form-card {
-      padding: 28px;
-    }
-
-    .form-card h3 {
-      color: var(--primary);
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-    }
-
-    .form-card p {
-      color: var(--muted);
-      margin-bottom: 18px;
     }
 
     .form-group {
@@ -421,13 +507,12 @@
     }
 
     .form-group input,
-    .form-group select,
     .form-group textarea {
       width: 100%;
-      padding: 14px 14px;
+      padding: 14px;
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
       color: var(--text);
       outline: none;
       font: inherit;
@@ -448,8 +533,8 @@
       margin-top: 14px;
       padding: 12px 14px;
       border-radius: 12px;
-      background: rgba(114, 226, 168, 0.10);
-      border: 1px solid rgba(114, 226, 168, 0.24);
+      background: rgba(114,226,168,0.10);
+      border: 1px solid rgba(114,226,168,0.24);
       color: #c7f5df;
       font-size: 0.95rem;
     }
@@ -457,22 +542,14 @@
     .faq-list {
       display: grid;
       gap: 16px;
-      max-width: 900px;
+      max-width: 920px;
       margin: 0 auto;
-    }
-
-    .faq-item {
-      padding: 22px;
     }
 
     .faq-item h4 {
       color: var(--primary);
       margin-bottom: 8px;
       font-size: 1.08rem;
-    }
-
-    .faq-item p {
-      color: var(--muted);
     }
 
     .cta {
@@ -482,22 +559,20 @@
     .cta-box {
       padding: 34px;
       text-align: center;
-      border-radius: 28px;
       background:
-        linear-gradient(180deg, rgba(143, 107, 255, 0.10), rgba(255, 255, 255, 0.02)),
+        linear-gradient(180deg, rgba(143,107,255,0.10), rgba(255,255,255,0.02)),
         var(--card);
-      border: 1px solid rgba(143, 107, 255, 0.18);
-      box-shadow: var(--shadow);
+      border: 1px solid rgba(143,107,255,0.18);
     }
 
     .cta-box h2 {
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-size: clamp(1.9rem, 3vw, 2.9rem);
       margin-bottom: 10px;
     }
 
     .cta-box p {
       color: var(--muted);
-      max-width: 780px;
+      max-width: 760px;
       margin: 0 auto 22px;
     }
 
@@ -511,11 +586,16 @@
 
     @media (max-width: 1024px) {
       .hero-grid,
-      .split,
-      .waitlist-grid,
       .grid-3,
-      .hero-mini {
+      .grid-2,
+      .waitlist-grid,
+      .stats-row,
+      .rank-track {
         grid-template-columns: 1fr;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
       }
 
       .nav {
@@ -532,11 +612,15 @@
       nav ul {
         gap: 16px;
       }
+
+      h1 {
+        max-width: none;
+      }
     }
 
     @media (max-width: 640px) {
       .container {
-        width: min(var(--max), calc(100% - 26px));
+        width: min(var(--max), calc(100% - 24px));
       }
 
       .hero {
@@ -550,23 +634,16 @@
       .btn {
         width: 100%;
       }
-
-      .form-card,
-      .panel,
-      .card,
-      .hero-card,
-      .mini-card,
-      .faq-item,
-      .cta-box {
-        padding: 22px;
-      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <a href="#home" class="brand"><span>SkillEX</span></a>
+      <a href="#home" class="brand">
+        <span class="brand-mark"></span>
+        <span>SkillEX</span>
+      </a>
 
       <nav>
         <ul>
@@ -593,79 +670,96 @@
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow" data-en="Gaming Talent Platform" data-de="Gaming-Talent-Plattform">
-            Gaming Talent Platform
-          </div>
+          <div class="eyebrow" data-en="Gaming Talent Platform" data-de="Gaming-Talent-Plattform">Gaming Talent Platform</div>
 
-          <h1
-            data-en="The platform where gaming meets real career potential."
-            data-de="Die Plattform, auf der Gaming auf echtes Karrierepotenzial trifft."
-          >
-            The platform where gaming meets real career potential.
-          </h1>
+          <h1 data-en="Turn gaming skills into real career opportunities." data-de="Verwandle Gaming-Skills in echte Karrierechancen.">Turn gaming skills into real career opportunities.</h1>
 
-          <p
-            data-en="SkillEX helps gamers translate in-game performance into real-world career opportunities by making teamwork, strategy, communication, and discipline visible to employers."
-            data-de="SkillEX hilft Gamern dabei, In-Game-Leistung in echte Karrierechancen zu übersetzen, indem Teamwork, Strategie, Kommunikation und Disziplin für Arbeitgeber sichtbar gemacht werden."
-          >
-            SkillEX helps gamers translate in-game performance into real-world career opportunities by making teamwork, strategy, communication, and discipline visible to employers.
+          <p data-en="SkillEX helps gamers show teamwork, strategy, communication, and discipline in a way companies can understand fast." data-de="SkillEX hilft Gamern dabei, Teamwork, Strategie, Kommunikation und Disziplin so sichtbar zu machen, dass Unternehmen den Mehrwert schnell verstehen.">
+            SkillEX helps gamers show teamwork, strategy, communication, and discipline in a way companies can understand fast.
           </p>
 
           <div class="hero-actions">
-            <a href="#waitlist" class="btn btn-primary" data-en="Join the Waitlist" data-de="Zur Warteliste">
-              Join the Waitlist
-            </a>
-            <a href="#companies" class="btn btn-secondary" data-en="Explore for Companies" data-de="Für Unternehmen entdecken">
-              Explore for Companies
-            </a>
+            <a href="#waitlist" class="btn btn-primary" data-en="Join the Waitlist" data-de="Zur Warteliste">Join the Waitlist</a>
+            <a href="#how" class="btn btn-secondary" data-en="See How It Works" data-de="So funktioniert's">See How It Works</a>
           </div>
 
-          <div class="hero-mini">
-            <div class="mini-card">
+          <div class="stats-row">
+            <div class="stat-card">
               <h3>2</h3>
-              <p data-en="Main User Groups" data-de="Hauptzielgruppen">Main User Groups</p>
+              <p data-en="User Groups" data-de="Zielgruppen">User Groups</p>
             </div>
-            <div class="mini-card">
+            <div class="stat-card">
               <h3>24/7</h3>
               <p data-en="Digital Access" data-de="Digitaler Zugriff">Digital Access</p>
             </div>
-            <div class="mini-card">
+            <div class="stat-card">
               <h3>AI</h3>
-              <p data-en="Skill Translation Vision" data-de="Vision der Skill-Übersetzung">Skill Translation Vision</p>
+              <p data-en="Skill Translation" data-de="Skill-Übersetzung">Skill Translation</p>
+            </div>
+            <div class="stat-card">
+              <h3>EN / DE</h3>
+              <p data-en="Bilingual Website" data-de="Zweisprachige Website">Bilingual Website</p>
             </div>
           </div>
         </div>
 
         <div class="hero-card">
           <div class="mock-label" data-en="Platform Preview" data-de="Plattform-Vorschau">Platform Preview</div>
-          <h3 data-en="Why SkillEX?" data-de="Warum SkillEX?">Why SkillEX?</h3>
-          <p
-            data-en="Gaming builds more than entertainment. It develops high-value skills that can be recognized in professional environments."
-            data-de="Gaming ist mehr als Unterhaltung. Es entwickelt wertvolle Fähigkeiten, die auch im Berufsleben relevant sind."
-          >
-            Gaming builds more than entertainment. It develops high-value skills that can be recognized in professional environments.
+          <h3 data-en="Gaming builds more than entertainment." data-de="Gaming schafft mehr als nur Unterhaltung.">Gaming builds more than entertainment.</h3>
+          <p data-en="Competitive gaming can reflect focus, teamwork, discipline, fast decision-making, and resilience under pressure." data-de="Competitive Gaming kann Fokus, Teamwork, Disziplin, schnelle Entscheidungen und Belastbarkeit unter Druck zeigen.">
+            Competitive gaming can reflect focus, teamwork, discipline, fast decision-making, and resilience under pressure.
           </p>
 
-          <ul class="skill-list">
-            <li>
-              <span class="dot"></span>
-              <span data-en="Show transferable skills through gaming profiles" data-de="Übertragbare Fähigkeiten durch Gaming-Profile sichtbar machen">
-                Show transferable skills through gaming profiles
-              </span>
-            </li>
-            <li>
-              <span class="dot"></span>
-              <span data-en="Help companies discover disciplined, competitive talent" data-de="Unternehmen helfen, disziplinierte und leistungsstarke Talente zu finden">
-                Help companies discover disciplined, competitive talent
-              </span>
-            </li>
-            <li>
-              <span class="dot"></span>
-              <span data-en="Connect identity, passion, and employability" data-de="Identität, Leidenschaft und Employability verbinden">
-                Connect identity, passion, and employability
-              </span>
-            </li>
-          </ul>
+          <div class="controller" aria-hidden="true">
+            <svg viewBox="0 0 600 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M160 102C112 102 74 131 58 176L37 235C26 264 48 294 78 294C97 294 114 284 125 268L164 214H436L475 268C486 284 503 294 522 294C552 294 574 264 563 235L542 176C526 131 488 102 440 102H160Z" fill="#dbe8ff" fill-opacity="0.96"/>
+              <rect x="132" y="150" width="72" height="18" rx="8" fill="#0e1627"/>
+              <rect x="159" y="123" width="18" height="72" rx="8" fill="#0e1627"/>
+              <circle cx="422" cy="144" r="16" fill="#6EA8FF"/>
+              <circle cx="462" cy="182" r="16" fill="#8F6BFF"/>
+              <circle cx="384" cy="182" r="16" fill="#72E2A8"/>
+              <circle cx="424" cy="220" r="16" fill="#ff8da0"/>
+              <circle cx="248" cy="182" r="26" fill="#11182b" fill-opacity="0.85"/>
+              <circle cx="352" cy="182" r="26" fill="#11182b" fill-opacity="0.85"/>
+              <rect x="266" y="115" width="68" height="22" rx="11" fill="#11182b" fill-opacity="0.85"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="progression">
+      <div class="container">
+        <div class="rank-card">
+          <div class="rank-card-top">
+            <div>
+              <h3 data-en="Progression matters." data-de="Progression zählt.">Progression matters.</h3>
+              <p data-en="SkillEX is built around measurable growth and visible improvement." data-de="SkillEX basiert auf messbarem Fortschritt und sichtbarer Verbesserung." style="color: var(--muted); margin-top: 6px;">
+                SkillEX is built around measurable growth and visible improvement.
+              </p>
+            </div>
+            <div class="rank-pill" data-en="From low rank to high potential" data-de="Von niedrigem Rang zu hohem Potenzial">From low rank to high potential</div>
+          </div>
+
+          <div class="rank-track">
+            <div class="rank-box">
+              <span class="emoji">🥉</span>
+              <strong data-en="Bronze" data-de="Bronze">Bronze</strong>
+              <span data-en="Starting point" data-de="Startpunkt">Starting point</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="rank-box">
+              <span class="emoji">💎</span>
+              <strong data-en="Diamond" data-de="Diamond">Diamond</strong>
+              <span data-en="Growth through consistency" data-de="Wachstum durch Konstanz">Growth through consistency</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="rank-box">
+              <span class="emoji">🏆</span>
+              <strong data-en="Champion" data-de="Champion">Champion</strong>
+              <span data-en="High performance mindset" data-de="High-Performance-Mindset">High performance mindset</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -674,42 +768,28 @@
       <div class="container">
         <div class="section-title">
           <h2 data-en="How SkillEX Works" data-de="So funktioniert SkillEX">How SkillEX Works</h2>
-          <p
-            data-en="The process is simple: gamers create profiles, SkillEX translates their experience into transferable skills, and companies discover candidates through a fresh talent pipeline."
-            data-de="Der Ablauf ist einfach: Gamer erstellen Profile, SkillEX übersetzt ihre Erfahrung in übertragbare Fähigkeiten und Unternehmen entdecken Kandidaten über einen neuen Talentpool."
-          >
-            The process is simple: gamers create profiles, SkillEX translates their experience into transferable skills, and companies discover candidates through a fresh talent pipeline.
+          <p data-en="Simple flow. Clear value. Faster understanding for both gamers and companies." data-de="Einfacher Ablauf. Klarer Mehrwert. Schneller verständlich für Gamer und Unternehmen.">
+            Simple flow. Clear value. Faster understanding for both gamers and companies.
           </p>
         </div>
 
         <div class="grid-3">
           <div class="card">
-            <h3 data-en="1. Build Your Profile" data-de="1. Profil erstellen">1. Build Your Profile</h3>
-            <p
-              data-en="Users add their favorite games, roles, ranks, competitive experience, and personal strengths."
-              data-de="Nutzer fügen ihre Spiele, Rollen, Ränge, Competitive-Erfahrung und persönlichen Stärken hinzu."
-            >
-              Users add their favorite games, roles, ranks, competitive experience, and personal strengths.
+            <h3 data-en="1. Build a Profile" data-de="1. Profil erstellen">1. Build a Profile</h3>
+            <p data-en="Add your games, roles, rank, strengths, and competitive background." data-de="Füge deine Games, Rollen, deinen Rang, deine Stärken und deinen Competitive-Hintergrund hinzu.">
+              Add your games, roles, rank, strengths, and competitive background.
             </p>
           </div>
-
           <div class="card">
-            <h3 data-en="2. Translate Your Skills" data-de="2. Skills übersetzen">2. Translate Your Skills</h3>
-            <p
-              data-en="SkillEX highlights communication, leadership, strategy, problem-solving, and adaptability."
-              data-de="SkillEX macht Kommunikation, Leadership, Strategie, Problemlösung und Anpassungsfähigkeit sichtbar."
-            >
-              SkillEX highlights communication, leadership, strategy, problem-solving, and adaptability.
+            <h3 data-en="2. Translate Skills" data-de="2. Skills übersetzen">2. Translate Skills</h3>
+            <p data-en="SkillEX highlights teamwork, leadership, communication, and adaptability." data-de="SkillEX macht Teamwork, Leadership, Kommunikation und Anpassungsfähigkeit sichtbar.">
+              SkillEX highlights teamwork, leadership, communication, and adaptability.
             </p>
           </div>
-
           <div class="card">
             <h3 data-en="3. Create Opportunities" data-de="3. Chancen schaffen">3. Create Opportunities</h3>
-            <p
-              data-en="Companies can explore talent profiles and identify candidates with performance-driven habits."
-              data-de="Unternehmen können Talentprofile durchsuchen und Kandidaten mit leistungsorientierten Gewohnheiten finden."
-            >
-              Companies can explore talent profiles and identify candidates with performance-driven habits.
+            <p data-en="Companies discover motivated and performance-driven candidates in a fresh way." data-de="Unternehmen entdecken motivierte und leistungsorientierte Kandidaten auf eine neue Art.">
+              Companies discover motivated and performance-driven candidates in a fresh way.
             </p>
           </div>
         </div>
@@ -717,109 +797,68 @@
     </section>
 
     <section id="gamers">
-      <div class="container">
-        <div class="section-title">
-          <h2 data-en="For Gamers" data-de="Für Gamer">For Gamers</h2>
-          <p
-            data-en="Gaming is more than a hobby. It can demonstrate real strengths that deserve recognition in the job market."
-            data-de="Gaming ist mehr als ein Hobby. Es kann echte Stärken zeigen, die auf dem Arbeitsmarkt Anerkennung verdienen."
-          >
-            Gaming is more than a hobby. It can demonstrate real strengths that deserve recognition in the job market.
+      <div class="container grid-2">
+        <div class="panel">
+          <h3 data-en="For Gamers" data-de="Für Gamer">For Gamers</h3>
+          <p data-en="Gaming is more than a hobby. It can show focus, communication, resilience, and growth." data-de="Gaming ist mehr als ein Hobby. Es kann Fokus, Kommunikation, Belastbarkeit und Entwicklung zeigen.">
+            Gaming is more than a hobby. It can show focus, communication, resilience, and growth.
           </p>
+          <div class="icon-row">
+            <div class="icon-pill">🎯 <span data-en="Focus" data-de="Fokus">Focus</span></div>
+            <div class="icon-pill">🧠 <span data-en="Strategy" data-de="Strategie">Strategy</span></div>
+            <div class="icon-pill">🤝 <span data-en="Teamwork" data-de="Teamwork">Teamwork</span></div>
+            <div class="icon-pill">⚡ <span data-en="Fast Decisions" data-de="Schnelle Entscheidungen">Fast Decisions</span></div>
+          </div>
+          <div class="mini-visual" aria-hidden="true">🎮</div>
         </div>
 
-        <div class="split">
-          <div class="panel">
-            <h3 data-en="Why gamers would join" data-de="Warum Gamer mitmachen würden">Why gamers would join</h3>
-            <ul>
-              <li data-en="Create a profile based on gaming experience" data-de="Ein Profil auf Basis der eigenen Gaming-Erfahrung erstellen">
-                Create a profile based on gaming experience
-              </li>
-              <li data-en="Show soft skills in a fresh and modern way" data-de="Soft Skills auf eine moderne Art sichtbar machen">
-                Show soft skills in a fresh and modern way
-              </li>
-              <li data-en="Stand out beyond a traditional CV" data-de="Sich über einen klassischen Lebenslauf hinaus abheben">
-                Stand out beyond a traditional CV
-              </li>
-              <li data-en="Get discovered by companies that value mindset and performance" data-de="Von Unternehmen entdeckt werden, die Mindset und Leistung schätzen">
-                Get discovered by companies that value mindset and performance
-              </li>
-            </ul>
-          </div>
-
-          <div class="panel">
-            <h3 data-en="Profile highlights" data-de="Profil-Highlights">Profile highlights</h3>
-            <p
-              data-en="A SkillEX profile can include games played, preferred roles, competitive background, teamwork examples, and translated strengths."
-              data-de="Ein SkillEX-Profil kann gespielte Games, bevorzugte Rollen, Competitive-Hintergrund, Teamwork-Beispiele und übersetzte Stärken enthalten."
-            >
-              A SkillEX profile can include games played, preferred roles, competitive background, teamwork examples, and translated strengths.
-            </p>
-            <p
-              data-en="This helps gamers present themselves in a more complete and differentiated way."
-              data-de="Das hilft Gamern, sich vollständiger und differenzierter zu präsentieren."
-            >
-              This helps gamers present themselves in a more complete and differentiated way.
-            </p>
+        <div class="visual-card">
+          <h3 data-en="What a gamer profile can show" data-de="Was ein Gamer-Profil zeigen kann">What a gamer profile can show</h3>
+          <div class="grid-2" style="margin-top: 10px; gap: 14px;">
+            <div class="card" style="padding: 18px; box-shadow: none;">
+              <h3 style="font-size: 1rem; margin-bottom: 8px;" data-en="Main Game" data-de="Hauptspiel">Main Game</h3>
+              <p>Rocket League / Valorant / CS</p>
+            </div>
+            <div class="card" style="padding: 18px; box-shadow: none;">
+              <h3 style="font-size: 1rem; margin-bottom: 8px;" data-en="Role" data-de="Rolle">Role</h3>
+              <p data-en="Shot-caller / team player" data-de="Shot-Caller / Teamplayer">Shot-caller / team player</p>
+            </div>
+            <div class="card" style="padding: 18px; box-shadow: none;">
+              <h3 style="font-size: 1rem; margin-bottom: 8px;" data-en="Strength" data-de="Stärke">Strength</h3>
+              <p data-en="Consistency under pressure" data-de="Konstanz unter Druck">Consistency under pressure</p>
+            </div>
+            <div class="card" style="padding: 18px; box-shadow: none;">
+              <h3 style="font-size: 1rem; margin-bottom: 8px;" data-en="Potential" data-de="Potenzial">Potential</h3>
+              <p data-en="Transferable professional value" data-de="Übertragbarer beruflicher Mehrwert">Transferable professional value</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section id="companies">
-      <div class="container">
-        <div class="section-title">
-          <h2 data-en="For Companies" data-de="Für Unternehmen">For Companies</h2>
-          <p
-            data-en="SkillEX helps employers discover motivated, coachable, and high-performing candidates through gaming-based indicators."
-            data-de="SkillEX hilft Arbeitgebern dabei, motivierte, lernfähige und leistungsstarke Kandidaten über gamingbasierte Merkmale zu entdecken."
-          >
-            SkillEX helps employers discover motivated, coachable, and high-performing candidates through gaming-based indicators.
+      <div class="container grid-2">
+        <div class="panel">
+          <h3 data-en="For Companies" data-de="Für Unternehmen">For Companies</h3>
+          <p data-en="SkillEX helps employers discover disciplined, coachable, and competitive talent beyond a traditional CV." data-de="SkillEX hilft Arbeitgebern dabei, disziplinierte, lernfähige und leistungsorientierte Talente über den klassischen Lebenslauf hinaus zu entdecken.">
+            SkillEX helps employers discover disciplined, coachable, and competitive talent beyond a traditional CV.
           </p>
+          <ul style="margin-top: 16px;">
+            <li data-en="Access a new talent pipeline" data-de="Zugang zu einem neuen Talentpool">Access a new talent pipeline</li>
+            <li data-en="Spot mindset and performance signals" data-de="Mindset- und Leistungssignale erkennen">Spot mindset and performance signals</li>
+            <li data-en="Build more modern hiring flows" data-de="Modernere Recruiting-Prozesse aufbauen">Build more modern hiring flows</li>
+          </ul>
         </div>
 
-        <div class="split">
-          <div class="panel">
-            <h3 data-en="Benefits for employers" data-de="Vorteile für Arbeitgeber">Benefits for employers</h3>
-            <ul>
-              <li data-en="Access a new and overlooked talent pool" data-de="Zugang zu einem neuen und oft übersehenen Talentpool">
-                Access a new and overlooked talent pool
-              </li>
-              <li data-en="Identify teamwork, communication, and adaptability" data-de="Teamwork, Kommunikation und Anpassungsfähigkeit erkennen">
-                Identify teamwork, communication, and adaptability
-              </li>
-              <li data-en="Find candidates with discipline and competitive drive" data-de="Kandidaten mit Disziplin und Leistungswillen finden">
-                Find candidates with discipline and competitive drive
-              </li>
-              <li data-en="Build more diverse and modern hiring pipelines" data-de="Modernere und vielfältigere Recruiting-Pipelines aufbauen">
-                Build more diverse and modern hiring pipelines
-              </li>
-            </ul>
+        <div class="visual-card">
+          <h3 data-en="Why it stands out" data-de="Warum es heraussticht">Why it stands out</h3>
+          <div class="icon-row">
+            <div class="icon-pill">📈 <span data-en="Growth" data-de="Wachstum">Growth</span></div>
+            <div class="icon-pill">🏁 <span data-en="Drive" data-de="Drive">Drive</span></div>
+            <div class="icon-pill">🗣️ <span data-en="Communication" data-de="Kommunikation">Communication</span></div>
+            <div class="icon-pill">🛠️ <span data-en="Potential" data-de="Potenzial">Potential</span></div>
           </div>
-
-          <div class="panel">
-            <h3 data-en="Target industries" data-de="Zielbranchen">Target industries</h3>
-            <ul>
-              <li data-en="Esports and gaming organizations" data-de="Esports- und Gaming-Organisationen">
-                Esports and gaming organizations
-              </li>
-              <li data-en="Technology and software companies" data-de="Technologie- und Softwareunternehmen">
-                Technology and software companies
-              </li>
-              <li data-en="Digital marketing and media teams" data-de="Digitale Marketing- und Medienteams">
-                Digital marketing and media teams
-              </li>
-              <li data-en="Startups looking for ambitious, coachable talent" data-de="Startups, die ambitionierte und lernfähige Talente suchen">
-                Startups looking for ambitious, coachable talent
-              </li>
-            </ul>
-
-            <div style="margin-top: 18px;">
-              <a href="#waitlist" class="btn btn-primary" data-en="Join as a Company" data-de="Als Unternehmen beitreten">
-                Join as a Company
-              </a>
-            </div>
-          </div>
+          <div class="mini-visual" aria-hidden="true">📊</div>
         </div>
       </div>
     </section>
@@ -828,22 +867,16 @@
       <div class="container">
         <div class="section-title">
           <h2 data-en="Join the Waitlist" data-de="Zur Warteliste">Join the Waitlist</h2>
-          <p
-            data-en="Whether you are a gamer or a company, SkillEX lets you register your interest through the waitlist forms below."
-            data-de="Egal ob du Gamer oder Unternehmen bist, über die Wartelisten-Formulare unten kannst du dein Interesse an SkillEX eintragen."
-          >
-            Whether you are a gamer or a company, SkillEX lets you register your interest through the waitlist forms below.
+          <p data-en="Two simple forms for the two main user groups." data-de="Zwei einfache Formulare für die zwei Hauptzielgruppen.">
+            Two simple forms for the two main user groups.
           </p>
         </div>
 
         <div class="waitlist-grid">
           <div class="form-card">
             <h3 data-en="Gamer Waitlist" data-de="Gamer-Warteliste">Gamer Waitlist</h3>
-            <p
-              data-en="Join as a gamer and show how your in-game experience can create real-world value."
-              data-de="Trage dich als Gamer ein und zeige, wie deine Spielerfahrung echten Mehrwert schaffen kann."
-            >
-              Join as a gamer and show how your in-game experience can create real-world value.
+            <p data-en="Show how your gaming experience can create real-world value." data-de="Zeige, wie deine Gaming-Erfahrung echten Mehrwert schaffen kann.">
+              Show how your gaming experience can create real-world value.
             </p>
 
             <form id="gamerForm">
@@ -851,29 +884,22 @@
                 <label for="gamerName" data-en="Full Name" data-de="Vollständiger Name">Full Name</label>
                 <input type="text" id="gamerName" required />
               </div>
-
               <div class="form-group">
                 <label for="gamerEmail" data-en="Email Address" data-de="E-Mail-Adresse">Email Address</label>
                 <input type="email" id="gamerEmail" required />
               </div>
-
               <div class="form-group">
                 <label for="gamerGame" data-en="Main Game" data-de="Hauptspiel">Main Game</label>
                 <input type="text" id="gamerGame" required />
               </div>
-
               <div class="form-group">
                 <label for="gamerLevel" data-en="Skill Level / Rank" data-de="Skill-Level / Rang">Skill Level / Rank</label>
                 <input type="text" id="gamerLevel" />
               </div>
 
-              <button type="submit" class="btn btn-primary" data-en="Join Gamer Waitlist" data-de="Gamer-Warteliste beitreten">
-                Join Gamer Waitlist
-              </button>
+              <button type="submit" class="btn btn-primary" data-en="Join Gamer Waitlist" data-de="Gamer-Warteliste beitreten">Join Gamer Waitlist</button>
 
-              <div class="success-msg" id="gamerSuccess"
-                data-en="Thanks! Your gamer waitlist entry has been submitted."
-                data-de="Danke! Dein Eintrag für die Gamer-Warteliste wurde abgeschickt.">
+              <div class="success-msg" id="gamerSuccess" data-en="Thanks! Your gamer waitlist entry has been submitted." data-de="Danke! Dein Eintrag für die Gamer-Warteliste wurde abgeschickt.">
                 Thanks! Your gamer waitlist entry has been submitted.
               </div>
             </form>
@@ -881,11 +907,8 @@
 
           <div class="form-card">
             <h3 data-en="Company Waitlist" data-de="Unternehmens-Warteliste">Company Waitlist</h3>
-            <p
-              data-en="Join as a company and express interest in discovering gaming-based talent through SkillEX."
-              data-de="Trage dich als Unternehmen ein und zeige Interesse daran, gamingbasiertes Talent über SkillEX zu entdecken."
-            >
-              Join as a company and express interest in discovering gaming-based talent through SkillEX.
+            <p data-en="Discover gaming-based talent through a modern platform concept." data-de="Entdecke gamingbasiertes Talent über ein modernes Plattformkonzept.">
+              Discover gaming-based talent through a modern platform concept.
             </p>
 
             <form id="companyForm">
@@ -893,29 +916,22 @@
                 <label for="companyName" data-en="Company Name" data-de="Firmenname">Company Name</label>
                 <input type="text" id="companyName" required />
               </div>
-
               <div class="form-group">
                 <label for="companyEmail" data-en="Business Email" data-de="Geschäftliche E-Mail">Business Email</label>
                 <input type="email" id="companyEmail" required />
               </div>
-
               <div class="form-group">
                 <label for="companyIndustry" data-en="Industry" data-de="Branche">Industry</label>
                 <input type="text" id="companyIndustry" required />
               </div>
-
               <div class="form-group">
                 <label for="companyNeeds" data-en="Hiring Needs" data-de="Hiring-Bedarf">Hiring Needs</label>
                 <textarea id="companyNeeds"></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary" data-en="Join Company Waitlist" data-de="Unternehmens-Warteliste beitreten">
-                Join Company Waitlist
-              </button>
+              <button type="submit" class="btn btn-primary" data-en="Join Company Waitlist" data-de="Unternehmens-Warteliste beitreten">Join Company Waitlist</button>
 
-              <div class="success-msg" id="companySuccess"
-                data-en="Thanks! Your company waitlist entry has been submitted."
-                data-de="Danke! Dein Eintrag für die Unternehmens-Warteliste wurde abgeschickt.">
+              <div class="success-msg" id="companySuccess" data-en="Thanks! Your company waitlist entry has been submitted." data-de="Danke! Dein Eintrag für die Unternehmens-Warteliste wurde abgeschickt.">
                 Thanks! Your company waitlist entry has been submitted.
               </div>
             </form>
@@ -928,42 +944,28 @@
       <div class="container">
         <div class="section-title">
           <h2 data-en="Frequently Asked Questions" data-de="Häufig gestellte Fragen">Frequently Asked Questions</h2>
-          <p
-            data-en="These are some of the main questions users might have about the SkillEX platform and its value."
-            data-de="Das sind einige der wichtigsten Fragen, die Nutzer zur SkillEX-Plattform und ihrem Mehrwert haben könnten."
-          >
-            These are some of the main questions users might have about the SkillEX platform and its value.
+          <p data-en="Short answers to the most important questions." data-de="Kurze Antworten auf die wichtigsten Fragen.">
+            Short answers to the most important questions.
           </p>
         </div>
 
         <div class="faq-list">
           <div class="faq-item">
             <h4 data-en="What is SkillEX?" data-de="Was ist SkillEX?">What is SkillEX?</h4>
-            <p
-              data-en="SkillEX is a platform concept that connects gaming experience with career development by translating in-game strengths into professional value."
-              data-de="SkillEX ist ein Plattformkonzept, das Gaming-Erfahrung mit Karriereentwicklung verbindet, indem In-Game-Stärken in beruflichen Mehrwert übersetzt werden."
-            >
-              SkillEX is a platform concept that connects gaming experience with career development by translating in-game strengths into professional value.
+            <p data-en="SkillEX is a platform idea that connects gaming experience with career development by translating in-game strengths into professional value." data-de="SkillEX ist eine Plattformidee, die Gaming-Erfahrung mit Karriereentwicklung verbindet, indem In-Game-Stärken in beruflichen Mehrwert übersetzt werden.">
+              SkillEX is a platform idea that connects gaming experience with career development by translating in-game strengths into professional value.
             </p>
           </div>
-
           <div class="faq-item">
-            <h4 data-en="Who is SkillEX for?" data-de="Für wen ist SkillEX?">Who is SkillEX for?</h4>
-            <p
-              data-en="It is designed for gamers seeking opportunities and companies looking for new, performance-driven talent."
-              data-de="Es ist für Gamer gedacht, die Chancen suchen, und für Unternehmen, die neue, leistungsorientierte Talente finden wollen."
-            >
-              It is designed for gamers seeking opportunities and companies looking for new, performance-driven talent.
+            <h4 data-en="Who is it for?" data-de="Für wen ist es gedacht?">Who is it for?</h4>
+            <p data-en="For gamers looking for opportunities and companies looking for performance-driven talent." data-de="Für Gamer, die Chancen suchen, und für Unternehmen, die leistungsorientierte Talente suchen.">
+              For gamers looking for opportunities and companies looking for performance-driven talent.
             </p>
           </div>
-
           <div class="faq-item">
-            <h4 data-en="What can users do on this website today?" data-de="Was können Nutzer auf dieser Website heute tun?">What can users do on this website today?</h4>
-            <p
-              data-en="Visitors can explore the platform vision, switch between English and German, and register interest through the gamer and company waitlist forms."
-              data-de="Besucher können die Plattformidee kennenlernen, zwischen Englisch und Deutsch wechseln und sich über die Gamer- und Unternehmens-Wartelisten eintragen."
-            >
-              Visitors can explore the platform vision, switch between English and German, and register interest through the gamer and company waitlist forms.
+            <h4 data-en="What can users do on this site now?" data-de="Was können Nutzer auf dieser Website aktuell tun?">What can users do on this site now?</h4>
+            <p data-en="Users can explore the concept, switch between English and German, and join the gamer or company waitlist." data-de="Nutzer können das Konzept kennenlernen, zwischen Englisch und Deutsch wechseln und der Gamer- oder Unternehmens-Warteliste beitreten.">
+              Users can explore the concept, switch between English and German, and join the gamer or company waitlist.
             </p>
           </div>
         </div>
@@ -973,16 +975,10 @@
     <section class="cta">
       <div class="container">
         <div class="cta-box">
-          <h2 data-en="SkillEX is built for the future of talent discovery." data-de="SkillEX ist für die Zukunft der Talententdeckung gebaut.">
-            SkillEX is built for the future of talent discovery.
-          </h2>
-          <p
-            data-en="The website combines clear messaging, bilingual functionality, and structured waitlist flows for both gamers and companies."
-            data-de="Die Website verbindet klares Messaging, funktionierende Zweisprachigkeit und strukturierte Wartelisten-Flows für Gamer und Unternehmen."
-          >
-            The website combines clear messaging, bilingual functionality, and structured waitlist flows for both gamers and companies.
+          <h2 data-en="A cleaner, more visual landing page for SkillEX." data-de="Eine klarere und visuellere Landingpage für SkillEX.">A cleaner, more visual landing page for SkillEX.</h2>
+          <p data-en="This final version uses stronger hierarchy, more numbers, clearer visuals, and less text-heavy sections." data-de="Diese finale Version nutzt eine stärkere Hierarchie, mehr Zahlen, klarere Visuals und weniger textlastige Bereiche.">
+            This final version uses stronger hierarchy, more numbers, clearer visuals, and less text-heavy sections.
           </p>
-
           <a href="#home" class="btn btn-primary" data-en="Back to Top" data-de="Zurück nach oben">Back to Top</a>
         </div>
       </div>
@@ -999,8 +995,8 @@
 
   <script>
     function setLanguage(lang) {
-      const elements = document.querySelectorAll("[data-en]");
-      const buttons = document.querySelectorAll(".lang-btn");
+      const elements = document.querySelectorAll('[data-en]');
+      const buttons = document.querySelectorAll('.lang-btn');
 
       elements.forEach((el) => {
         const value = el.getAttribute(`data-${lang}`);
@@ -1009,41 +1005,42 @@
         }
       });
 
-      buttons.forEach((btn) => btn.classList.remove("active"));
+      buttons.forEach((btn) => btn.classList.remove('active'));
 
-      if (lang === "en") {
-        buttons[0].classList.add("active");
-        document.documentElement.lang = "en";
+      if (lang === 'en') {
+        buttons[0].classList.add('active');
+        document.documentElement.lang = 'en';
       } else {
-        buttons[1].classList.add("active");
-        document.documentElement.lang = "de";
+        buttons[1].classList.add('active');
+        document.documentElement.lang = 'de';
       }
 
-      const gamerSuccess = document.getElementById("gamerSuccess");
-      const companySuccess = document.getElementById("companySuccess");
+      const gamerSuccess = document.getElementById('gamerSuccess');
+      const companySuccess = document.getElementById('companySuccess');
 
-      if (gamerSuccess.style.display === "block") {
+      if (gamerSuccess.style.display === 'block') {
         gamerSuccess.textContent = gamerSuccess.getAttribute(`data-${lang}`);
       }
 
-      if (companySuccess.style.display === "block") {
+      if (companySuccess.style.display === 'block') {
         companySuccess.textContent = companySuccess.getAttribute(`data-${lang}`);
       }
     }
 
-    document.getElementById("gamerForm").addEventListener("submit", function(e) {
+    document.getElementById('gamerForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const success = document.getElementById("gamerSuccess");
-      success.style.display = "block";
+      const success = document.getElementById('gamerSuccess');
+      success.style.display = 'block';
       this.reset();
     });
 
-    document.getElementById("companyForm").addEventListener("submit", function(e) {
+    document.getElementById('companyForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const success = document.getElementById("companySuccess");
-      success.style.display = "block";
+      const success = document.getElementById('companySuccess');
+      success.style.display = 'block';
       this.reset();
     });
   </script>
 </body>
 </html>
+
